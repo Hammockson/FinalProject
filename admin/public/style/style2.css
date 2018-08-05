@@ -1,0 +1,1305 @@
+a 
+{
+    color: #646464;
+    text-decoration: none;
+}
+
+a:hover 
+{
+    color: #212121;
+    text-decoration: none;
+}
+
+.container-fluid {
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 3px solid rgb(201, 201, 201);
+    
+  }
+
+/* ---------------------------------------------FONTS-------------------------------------- */
+
+/* MONTSERRAT */
+
+@font-face
+{
+    font-family: Montserrat-ExtraLight;
+    src: url(../style/fonts/montserrat/Montserrat-ExtraLight.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-Light;
+    src: url(../style/fonts/montserrat/Montserrat-Light.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-Regular;
+    src: url(../style/fonts/montserrat/Montserrat-Regular.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-Medium;
+    src: url(../style/fonts/montserrat/Montserrat-Medium.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-SemiBold;
+    src: url(../style/fonts/montserrat//Montserrat-SemiBold.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-Bold;
+    src: url(../style/fonts/montserrat/Montserrat-Bold.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-ExtraBold;
+    src: url(../style/fonts/montserrat/Montserrat-ExtraBold.ttf)
+}
+
+@font-face
+{
+    font-family: Montserrat-Black;
+    src: url(../style/fonts/montserrat/Montserrat-Black.ttf)
+}
+
+/* POPPINS */
+
+@font-face
+{
+    font-family: Poppins-ExtraLight;
+    src: url(../style/fonts/poppins/Poppins-ExtraLight.ttf)
+}
+
+@font-face
+{
+    font-family: Poppins-Light;
+    src: url(../style/fonts/poppins/Poppins-Light.ttf)
+}
+
+@font-face
+{
+    font-family: Poppins-Regular;
+    src: url(../style/fonts/poppins/Poppins-Regular.ttf)
+}
+
+@font-face
+{
+    font-family: Poppins-Medium;
+    src: url(../style/fonts/poppins/Poppins-Medium.ttf)
+}
+
+@font-face
+{
+    font-family: Poppins-SemiBold;
+    src: url(../style/fonts/poppins/Poppins-SemiBold.ttf)
+}
+
+@font-face
+{
+    font-family: Poppins-Bold;
+    src: url(../style/fonts/poppins/Poppins-Bold.ttf)
+}
+
+@font-face
+{
+    font-family: Poppins-ExtraBold;
+    src: url(../style/fonts/poppins/Poppins-ExtraBold.ttf)
+}
+@font-face
+{
+    font-family: Poppins-Black;
+    src: url(../style/fonts/poppins/Poppins-Black.ttf)
+}
+
+/* ---------------------------------------------ANIMICO FONT-------------------------------------- */
+
+.animico-txt1
+{
+    font-family: Poppins-ExtraLight;
+    color: #646464;
+}
+
+.animico-txt2
+{
+    font-family: Poppins-Light;
+    color: #646464;
+}
+
+.animico-txt3
+{
+    font-family: Poppins-Regular;
+    color: #646464;
+}
+
+.animico-txt4
+{
+    font-family: Poppins-Medium;
+    color: #646464;
+    line-height: 10px;
+}
+
+.animico-txt5
+{
+    font-family: Poppins-SemiBold;
+    color: #646464;
+}
+
+.animico-txt6
+{
+    font-family: Poppins-Bold;
+    color: #646464;
+}
+
+.animico-txt7
+{
+    font-family: Poppins-ExtraBold;
+    color: #646464;
+}
+
+.animico-txt8
+{
+    font-family: Poppins-Black;
+    color: #646464;
+}
+
+.animico-txt1b
+{
+    font-family: Poppins-ExtraLight;
+    color: #ffffff;
+}
+
+.animico-txt2b
+{
+    font-family: Poppins-Light;
+    color: #ffffff;
+}
+
+.animico-txt3b
+{
+    font-family: Poppins-Regular;
+    color: #ffffff;
+}
+
+.animico-txt4b
+{
+    font-family: Poppins-Medium;
+    color: #ffffff;
+}
+
+.animico-txt5b
+{
+    font-family: Poppins-SemiBold;
+    color: #ffffff;
+}
+
+.animico-txt6b
+{
+    font-family: Poppins-Bold;
+    color: #ffffff;
+}
+
+.animico-txt7b
+{
+    font-family: Poppins-ExtraBold;
+    color: #ffffff;
+}
+
+.animico-txt8b
+{
+    font-family: Poppins-Black;
+    color: #ffffff;
+}
+.animico-txt1c
+{
+    font-family: Poppins-ExtraLight;
+    color: #009946;
+}
+
+.animico-txt2c
+{
+    font-family: Poppins-Light;
+    color: #009946;
+}
+
+.animico-txt3c
+{
+    font-family: Poppins-Regular;
+    color: #009946;
+}
+
+.animico-txt4c
+{
+    font-family: Poppins-Medium;
+    color: #009946;
+}
+
+.animico-txt5c
+{
+    font-family: Poppins-SemiBold;
+    color: #009946;
+}
+
+.animico-txt6c
+{
+    font-family: Poppins-Bold;
+    color: #009946;
+}
+
+.animico-txt7c
+{
+    font-family: Poppins-ExtraBold;
+    color: #009946;
+}
+
+.animico-txt8c
+{
+    font-family: Poppins-Black;
+    color: #009946;
+}
+
+/* ---------------------------------------------NAVBAR 1-------------------------------------- */
+.animico-navbar
+{
+    height: 50px;
+    color: white;
+    border-radius: 0%;
+    border-bottom: 5px solid;
+    border-color: #009946;
+    background-color: #162345;
+    margin-right: -4px;
+    
+}
+
+/* ---------------------------------------------NAVBAR 2-------------------------------------- */
+
+.navbar-brand { position: relative; z-index: 2; }
+
+.navbar-nav.navbar-right .btn { position: relative; z-index: 2; padding: 4px 20px; margin: 10px auto; }
+
+.navbar .navbar-collapse { position: relative; }
+.navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 22px; padding-right: 22px; }
+
+.navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 300px; padding-left: 80px; width: 100%; }
+.navbar.navbar-default .nav-collapse { background-color: #f1f2f4; }
+.navbar.navbar-inverse .nav-collapse { background-color: #f1f2f4; }
+.navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
+.nav-collapse>li { float: right; }
+
+.btn.btn-circle { border-radius: 100px; }
+.btn.btn-square { border-radius: 0px; }
+.square { border-radius: 0px; }
+.btn.btn-outline { background-color: transparent; }
+
+@media screen and (max-width: 767px) {
+    .navbar .navbar-collapse .navbar-right > li:last-child { padding-left: 15px; padding-right: 15px; } 
+    
+    .navbar .nav-collapse { margin: 7.5px auto; padding: 0; }
+    .navbar .nav-collapse .navbar-form { margin: 0; }
+    .nav-collapse>li { float: none; }
+}
+
+/* ---------------------------------------------CONTAINER-------------------------------------- */
+
+.anim-container {
+  /* width: 100%; */
+  background: url(../img/bg1.jpg) no-repeat center;
+  height: 100%;
+  margin: 0 auto;
+  height: 100%; 
+}
+
+.anim-container2 {
+  /* width: 100%; */
+  background: url() no-repeat center;
+  background-size: 100%;
+  margin: 0 auto;
+  /* height: 100%;  */
+}
+
+.anim-container-fullscreen {
+  width: 100%; 
+  height: 100%;
+  background-color: salmon solid;
+}
+
+/* ---------------------------------------------LOGIN-------------------------------------- */
+
+.anim-loginbox
+{
+  position: relative;
+}
+
+.anim-loginbox input
+{
+  background: transparent;
+  border: 1px solid white;
+  /* border-bottom: 1px solid white; */
+  border-radius: 0px;
+  outline: none;
+  color: white;
+}
+::placeholder
+{
+  color: white
+}
+
+/* ---------------------------------------------BANNER-------------------------------------- */
+
+.banner 
+{
+	background-image: url(/img/bg1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    height: 640px;
+    
+}
+
+.banner h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner p 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner2 
+{
+	background-image: url(/img/bg2-min.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner3 
+{
+	background-image: url(/img/bg3-min.png);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 100%; */
+    
+}
+
+
+.banner-promo-left 
+{
+	background-image: url(/img/BannerPromoLeft.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-promo-left h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-promo-left h2 {
+	/* font-family: 'Spectral', serif; */
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-promo-left p 
+{
+	color: rgb(255, 255, 255);
+}
+
+
+.banner-promo-right 
+{
+	background-image: url(/img/BannerPromoRight.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-promo-right h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-promo-right h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-promo-right p 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-slider 
+{
+	background-image: url();
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-slider h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-slider h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-slider p 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-quote 
+{
+	background-image: url();
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-quote h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-quot h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-quote p 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-newsletter 
+{
+	background-image: url(/img/Banner\ Newsletter.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-newsletter h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-newsletter h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-newsletter p 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-whale 
+{
+	background-image: url(/img/Banner-Whale.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-whale h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-whale h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-whale p 
+{
+    color: rgb(255, 255, 255);
+    line-height: 10px;
+}
+
+.banner-zebra 
+{
+	background-image: url(/img/Banner-Zebra.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-zebra h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-zebra h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-zebra p 
+{
+    color: rgb(255, 255, 255);
+    line-height: 10px;
+}
+
+.banner-owl 
+{
+	background-image: url(/img/Banner-Owl.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-owl h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-owl h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-owl p 
+{
+    color: rgb(255, 255, 255);
+    line-height: 10px;
+}
+
+.banner-panda 
+{
+	background-image: url(/img/Banner-Panda.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center center;
+    /* height: 640px; */
+    
+}
+
+.banner-panda h4 
+{
+	color: rgb(255, 255, 255);
+}
+
+.banner-panda h2 {
+	font-family: 'Spectral', serif;
+	font-size: 44px;
+	font-weight: 600;
+	color: #fff;
+	text-transform: uppercase;
+}
+
+.banner-panda p 
+{
+    color: rgb(255, 255, 255);
+    line-height: 10px;
+}
+
+/* ---------------------------------------------BUTTONS-------------------------------------- */
+
+.animico-primary-button
+{
+    margin-top: 30px;
+}
+
+/* .banner .primary-button {
+    margin-top: 50px;
+} */
+
+.animico-primary-button a {
+	display: inline-block;
+	background-color: #222;
+	color: #fff;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 12px 20px;
+	border-radius: 0px;
+	text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.animico-primary-button a:hover {
+	display: inline-block;
+	background-color: #ffffff;
+	color: #222;
+	font-size: 13px;
+	text-transform: uppercase;
+	font-weight: 500;
+	padding: 12px 20px;
+	border-radius: 3px;
+	text-decoration: none;
+    letter-spacing: 0.5px;
+}
+
+.animico-btn 
+{
+    color:white;
+    background-color: #009946;
+    border-color: #ffffff solid;
+    border: 2px solid;
+    border-radius: 0%;
+}
+
+.animico-btn:hover 
+{
+    color:white;
+    background-color: #222;
+    border: 2px solid;
+    border-radius: 0%;
+}
+
+.animico-btn.active
+{
+  color:white;
+  background-color: #161616;
+  border: 2px solid;
+  border-radius: 0%;
+}
+
+.animico-btnb 
+{
+    color:white;
+    background-color: #222;
+    /* border-color: #ffffff; */
+    /* border: 2px solid; */
+    border-radius: 0%;
+}
+
+.animico-btnb:hover 
+{
+    color:white;
+    background-color: #009946;
+    /* border-color: #161616 solid; */
+    /* border: 2px solid; */
+    border-radius: 0%;
+}
+
+.animico-btnb.active
+{
+  color:white;
+  background-color: #161616;
+  /* border-color: #161616 solid; */
+  /* border: 2px solid; */
+  border-radius: 0%;
+}
+
+.animico-btnc 
+{
+    color:white;
+    background-color: #009946;
+    /* border-color: #ffffff; */
+    /* border: 2px solid; */
+    border-radius: 0%;
+}
+
+.animico-btnc:hover 
+{
+    color:white;
+    background-color: #222;
+    /* border-color: #161616 solid; */
+    /* border: 2px solid; */
+    border-radius: 0%;
+}
+
+.animico-btnc.active
+{
+  color:white;
+  background-color: #222;
+  /* border-color: #161616 solid; */
+  /* border: 2px solid; */
+  border-radius: 0%;
+}
+
+.animico-btnc2 
+{
+    color:white;
+    background-color: #009946;
+    /* border-color: #ffffff;
+    border: 1px solid; */
+    border-radius: 0%;
+    padding-top: 4px;
+    padding-right: 8px;
+    padding-bottom: 4px;
+    padding-left: 8px;
+    margin-right: 5px;
+}
+
+.animico-btnc2:hover 
+{
+    color:white;
+    background-color: #222;
+    /* border-color: #161616 solid; */
+    /* border: 2px solid; */
+    border-radius: 0%;
+}
+
+.animico-btnc2.active
+{
+  color:white;
+  background-color: #222;
+  /* border-color: #161616 solid; */
+  /* border: 2px solid; */
+  border-radius: 0%;
+}
+
+.animico-btnd 
+{
+    color:#303030;
+    background-color: transparent;
+    border: 2px solid #303030;
+    border-radius: 0%;
+}
+
+.animico-btnd:hover 
+{
+    color:white;
+    background-color: #303030;
+    border: 2px  solid #303030;
+    border-radius: 0%;
+}
+
+.animico-btnd.active
+{
+  color:white;
+  background-color: #222;
+  border-color: #303030 solid;
+  border: 2px;
+  border-radius: 0%;
+}
+
+.animico-btn2
+{
+    color:white;
+    background-color: #161616;
+    border: 0px;
+    border-radius: 0%;
+}
+.animico-btn2:hover
+{
+    color:white;
+    background-color: #f83a3a;
+    border: 0px;
+    border-radius: 0%;
+}
+
+/* ---------------------------------------------SEACRH FORM-------------------------------------- */
+.animico-form-btn
+{
+    border-radius: 0%;
+}
+
+.animico-form-control
+{
+    border-radius: 0%;
+    width: 50px;
+}
+
+/* ---------------------------------------------BADGE-------------------------------------- */
+.anim-badge {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color:transparent;
+  border-radius: 10px;
+}
+
+.anim-badge2 {
+  display: inline-block;
+  min-width: 10px;
+  padding: 3px 7px;
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1;
+  color: #fff;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  background-color:#009946;
+  border-radius: 10px;
+}
+
+/* ---------------------------------------------DROPDOWN-------------------------------------- */
+.anim-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 230px;
+  padding: 5px 0;
+  margin: 2px 0 0;
+  font-size: 14px;
+  text-align: left;
+  list-style: none;
+  background-color: rgb(39, 40, 44);
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  border: 1px solid rgb(33, 33, 33);
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-radius: 0px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+
+/* ---------------------------------------------CAROUSEL-------------------------------------- */
+
+
+
+
+.carousel{
+	margin-top: 30px;
+	position: relative;
+	padding-bottom: 50px;
+	background-color: transparent;
+}
+
+.item{
+	min-height: 325px;
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
+.item h2{
+	width: 80%;
+	color: #FFF;
+	padding: 15px;
+	font-size: 38px;
+	margin-bottom: 30px;
+	/* text-align: center; */
+	text-shadow: 1px 2px 3px #444;
+}
+
+.item .block{
+	width: 100%;
+	float: left;
+	color: #FFF;
+	min-height: 200px;
+	/* text-align: center; */
+	padding: 15px;
+	margin-bottom: 20px;
+	box-shadow: 1px 2px 3px #444;
+}
+
+
+.item h4{
+	width: 100%;
+	padding: 15px;
+	font-size: 30px;
+	font-weight: 900;
+	/* text-align: center; */
+	text-shadow: 2px 2px 2px #555;
+}
+
+
+.item p{
+	/* text-align: center; */
+	font-size: 18px;
+}
+
+.item .input-group{
+	margin-bottom: 10px;
+}
+
+.block-1{
+	background-color: #94C83C
+}
+
+.block-2{
+	background-color: #F36E20
+}
+
+.block-3{
+	background-color: #3498DB
+}
+
+.block-4{	
+	background-color: #F7C767
+}
+
+.carousel-indicators {
+    bottom: 0px;
+}
+
+.carousel-indicators .active {
+    width: 12px;
+    height: 12px;
+    margin: 0;
+    background-color: rgb(70, 70, 70);
+}
+
+.carousel-indicators li {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    margin: 1px;
+    text-indent: -999px;
+    cursor: pointer;
+    background-color: #000 \9;
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid rgb(70, 70, 70);
+    border-radius: 10px;
+}
+
+.control-carousel {
+    position: absolute;
+    top: 25%;
+    font-size: 60px;
+    color: #C2C2C1;
+  }
+
+.right {
+right: 150px;
+}
+
+.left {
+left: 150px;
+}
+
+/* ---------------------------------------------FOOTER-------------------------------------- */
+
+.footer-distributed{
+	background-color: #f1f2f4;
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+	text-align: left;
+	
+
+	padding: 55px 50px;
+	/* margin-top: 80px; */
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed h3{
+	color:  #162345;
+	/* font: normal 36px 'Cookie', cursive; */
+	margin: 0;
+}
+
+.footer-distributed h3 span{
+	color:  #5383d3;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  #162345;
+	margin: 20px 0 12px;
+	padding: 0px;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+	text-decoration: none;
+	color:  inherit;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #8f9296;
+	font-size: 14px;
+	font-weight: normal;
+	margin: 0;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 35%;
+}
+
+.footer-distributed .footer-center i{
+	background-color:  #33383b;
+	color: #162345;
+	font-size: 25px;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 42px;
+	margin: 10px 15px;
+	vertical-align: middle;
+}
+
+.footer-distributed .footer-center i.fa-envelope{
+	font-size: 17px;
+	line-height: 38px;
+}
+
+.footer-distributed .footer-center p{
+	display: inline-block;
+	color: #162345;
+	vertical-align: middle;
+	margin:0;
+}
+
+.footer-distributed .footer-center p span{
+	display:block;
+	font-weight: normal;
+	font-size:14px;
+	line-height:2;
+}
+
+.footer-distributed .footer-center p a{
+	color:  162345;
+	text-decoration: none;;
+}
+
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 20%;
+}
+
+.footer-distributed .footer-company-about{
+	line-height: 20px;
+	color:  #162345;
+	font-size: 13px;
+	font-weight: normal;
+	margin: 0;
+}
+
+.footer-distributed .footer-company-about span{
+	display: block;
+	color:  #162345;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom: 20px;
+}
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+
+	font-size: 20px;
+	color: #162345;
+	text-align: center;
+	line-height: 35px;
+
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 880px) {
+
+	.footer-distributed{
+		font: bold 14px sans-serif;
+	}
+
+	.footer-distributed .footer-left,
+	.footer-distributed .footer-center,
+	.footer-distributed .footer-right{
+		display: block;
+		width: 100%;
+		margin-bottom: 40px;
+		text-align: center;
+	}
+
+	.footer-distributed .footer-center i{
+		margin-left: 0;
+	}
+
+}
+
+/* ---------------------------------------------FOOTER-------------------------------------- */
+
+
+.productinfo img{
+    width: 100%;
+  }
+
+div > img
+{
+    width: 100%;
+}
+
+div > a > img
+{
+    width: 100%;
+}
+
+/* ---------------------------------------------PROFILE TABS-------------------------------------- */
+
+section {
+    padding: 60px 0;
+}
+
+section .section-title {
+    text-align: center;
+    color: #007b5e;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+}
+#tabs{
+	background: #007b5e;
+    color: #eee;
+}
+#tabs h6.section-title{
+    color: #eee;
+}
+
+#tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+    color: #f3f3f3;
+    background-color: transparent;
+    border-color: transparent transparent #f3f3f3;
+    border-bottom: 4px solid !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+#tabs .nav-tabs .nav-link {
+    border: 1px solid transparent;
+    border-top-left-radius: .25rem;
+    border-top-right-radius: .25rem;
+    color: #eee;
+    font-size: 20px;
+}
+
+.anim-table-hover > tbody > tr:hover {
+    background-color: #464646;
+}
+
+.anim-nav-pills > li > a > .badge {
+    width: 190px;
+    margin-left: 3px;
+}
+.anim-nav-pills > li {
+    width: 190px;
+    float: left;
+}
+.anim-nav-pills > li > a {
+    width: 190px;
+    border-radius: 0px;
+}
+.anim-nav-pills > li + li {
+    width: 190px;
+    /* margin-left: 2px; */
+}
+.anim-nav-pills > li.active > a,
+.anim-nav-pills > li.active > a:hover,
+.anim-nav-pills > li.active > a:focus {
+color: #fff;
+background-color: #009946;
+width: 190px;
+}
+.nav-stacked > li {
+    float: none;
+}
+
+
+/* ---------------------------------------------SHADOW-------------------------------------- */
+
+.shadow
+{
+    -webkit-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-inverse .navbar-toggle .icon-bar {
+    background-color: rgb(72, 72, 72);
+}
