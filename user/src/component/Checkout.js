@@ -1,13 +1,23 @@
 import React, { Component } from 'react';
 import Header from './Header'
 import Footer from './Footer'
-import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie'
+import HeaderLogged from './HeaderLogged'
+import { Link, Redirect } from 'react-router-dom';
+
+const cookies = new Cookies()
 
 class Cart extends Component {
     render() {
+        if(cookies.get('sessioniduser') === undefined) {
+            return <Redirect to="/Login"/>
+        }
+
+        let mycookie = cookies.get('sessioniduser');
+        let navigation = (mycookie !== undefined) ? <HeaderLogged /> : <Header />
         return (
             <div>
-                <Header />
+                {navigation}
                 
                 <div style={{paddingTop: '5%', paddingBottom: '10%'}}>
                     <div className="container">

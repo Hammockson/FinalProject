@@ -22,10 +22,12 @@ var port = 8002;
 
 app.use(koneksi());
 app.use(upload());
+app.use('/images', express.static('images'))
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
+// ------------------------------------------------------------ADMIN--------------------------------------------
 
 // INI BUAT NAMPILIN PRODUK
 app.get('/Product', (req, res) => {
@@ -68,12 +70,7 @@ app.post('/AddProduct', (req, res) => {
     var proddetail = req.body.detailprod;
     var prodgambar = req.files.gambarprod.name;
 
-    // console.log(idKategori)
-    // console.log(prodsize)
-    // console.log(prodname)
-    // console.log(prodprice)
-    // console.log(proddetail)
-    // console.log(prodgambar)
+    console.log(req.body)
 
 
     // PROTEKSI APABILA FILE KOSONG
@@ -109,13 +106,14 @@ app.post('/EditProduct', (req, res) => {
     var prodprice = req.body.hargaprod;
     var proddetail = req.body.detailprod;
 
+
     // console.log(idProduk)
     // console.log(idKategori)
     // console.log(prodsize)
     // console.log(prodname)
     // console.log(prodprice)
     // console.log(proddetail)
-    // console.log(prodgambar)
+    // console.log(gambar)
 
 
     // PROTEKSI APABILA FILE KOSONG
@@ -128,14 +126,12 @@ app.post('/EditProduct', (req, res) => {
                 console.log('Upload failed')
             }
             else{
-                console.log('Upload success')
-                var edit = `UPDATE product SET id_category="${idKategori}", id_size="${prodsize}", 
-                product_name="${prodname}", product_price="${prodprice}", product_detail="${proddetail}", product_image="${prodgambar}"
-                WHERE id = "${idProduk}"`
-                dbs.query(edit,(err,result) => {
+                var edit = "UPDATE `product` SET `id_category`=?,`id_size`=?,`product_name`=?,`product_price`=?,`product_detail`=?,`product_image`=? WHERE `id`=?"
+                dbs.query(edit,[idKategori,prodsize,prodname,prodprice,proddetail,gambar,idProduk],(err,result) => {
                     if(err) throw err;
-                    else{
-                        res.send('1')
+                    if(result != undefined){
+                    res.send('1')
+                    console.log('Upload success')
                     }
                 })
             }
@@ -147,6 +143,7 @@ app.post('/EditProduct', (req, res) => {
                 dbs.query(edit,(err,result) => {
                     if(err) throw err;
                     else{
+                        console.log("Sukses")
                         res.send('1')
                     }
                 })
@@ -201,7 +198,7 @@ app.post('/AddCategory', (req, res) => {
 
 
 // INI BUAT NAMBAH KATEGORI
-app.post('/AddCategory', (req, res) => {
+app.post('/Category', (req, res) => {
    var namaKategori = req.body.inputSatu;
 //    console.log(namaKategori)
    var sql = `INSERT INTO category VALUES("${''}", "${namaKategori}")`;
@@ -246,59 +243,6 @@ app.post('/RemoveCategory', (req, res) => {
     });
 });
 
-
-// BELOM KEPAKE
-
-// /** UNTUK EDIT KATEGORI*/
-// app.post('/EditCategory', (req, res) => {
-//     var id = req.body.id;
-//     var namaProduk = req.body.namaproduk;
-//     var hargaProduk = req.body.harga;
-//     var fileName = req.files.file.name;
-
-// // Ketika dapat kiriman yang berbentuk files maka akan dijalankan fungsi ini
-//     if(req.files){
-        
-//         var fungsiFile = req.files.file;
-
-//         fungsiFile.mv("./tampunganFile/"+fileName, (kaloError) => {
-//             if(kaloError){
-//                 console.log(kaloError);
-//                 res.send('Upload failed');
-//             } else {
-//                 res.send('Upload berhasil');
-//             }
-//         })
-//     }
-
-//     var queryUpdate = `UPDATE produk_samid SET nama_produk = "${namaProduk}", 
-//                         harga = "${hargaProduk}", foto_produk = "${fileName}" WHERE id="${id}"`;
-//     dbs.query(queryUpdate, (err, result) => {
-//         if(err){
-//             throw err;
-//         } else {
-//             res.send('Update berhasil !');
-//         }
-//     });
-
-// });
-
-// app.get('/getdata/:id', (req, res) => {
-//     /** Menyiapkan query untuk ke MySQL */
-//     var grabData = `SELECT * FROM produk_samid WHERE id = ${req.params.id}`;
-//     /** Mengeksekusi query dengan syntax nodeJS */
-//     dbs.query(grabData, (err, hasilquery) => {
-//         if(err){
-//             /** Mengeluarkan pesan error apabila terjadi kesalahan */
-//             throw err;
-//         } else {
-//             /** Menyiapkan hasil query untuk siap dikirim */
-//             res.send(hasilquery);
-//         }
-//     })
-// });
-
-
 // LOGIN ADMIN
 app.post('/adminlogin', (req, res) => {
     var sql = `SELECT * FROM user_admin`;
@@ -321,6 +265,138 @@ app.post('/adminlogin', (req, res) => {
         }
     });
 });
+
+
+
+// ------------------------------------------------------------USER---------------------------------------
+
+// LOGIN USER
+app.post('/userlogin', (req, res) => {
+    var sql = `SELECT * FROM user_client`;
+    dbs.query(sql, (error, result) => {
+        if(error) {
+            throw error;
+        } else {
+            var username = req.body.username;
+            var password = req.body.password;
+
+            for(var i=0; i < result.length; i++ ){
+                if(username === result[i].username && password === result[i].password){
+                   
+                    res.send(username);
+                    break;
+                } else if(i === result.length - 1) {
+                    res.send('0');
+                }
+            }
+        }
+    });
+});
+
+// INI BUAT NAMPILIN USER
+app.get('/Product', (req, res) => {
+    var panggilData = 'SELECT * FROM  product';
+    dbs.query(panggilData, (kaloError, hasilQuery) => {
+        if(kaloError)
+        {
+            throw kaloError;
+        } 
+        else 
+        {
+            res.send(hasilQuery);
+        }
+    });
+});
+
+// INI BUAT NAMBAH USER
+app.post('/AddUser', (req, res) => {
+    var userfname = req.body.cfname;
+    var userlname = req.body.clname;
+    var userusername = req.body.cusername;
+    var useremail = req.body.cemail;
+    var userpassword = req.body.cpassword;
+    var userphone = req.body.cphone;
+    var useraddress = req.body.caddress;
+    // var useravatar = req.files.avatarc.name;
+
+    console.log(req.body)
+
+    var sql = `INSERT INTO user_client (firstname, lastname, username, password, email, phone, address) values ('${userfname}','${userlname}','${userusername}','${useremail}','${userpassword}','${userphone}','${useraddress}')`;
+    dbs.query(sql, (error, result) => {
+        if (error){
+            throw error
+        } else {
+            console.log(result)
+        }
+    }) 
+ });
+
+ // INI BUAT EDIT USER
+app.post('/EditUser', (req, res) => {
+    var clid = req.body.cid;
+    var clfn = req.body.cfn;
+    var clln = req.body.cln;
+    var clun = req.body.cun;
+    var clce = req.body.ce;
+    var clp = req.body.cp;
+    var clph = req.body.cph;
+    var clca = req.body.ca;
+
+
+    // PROTEKSI APABILA FILE KOSONG
+    if(req.files) {
+        var gambar = req.files.gambarprod.name
+        var image = req.files.gambarprod
+        image.mv("./images/" + gambar, (err) => {
+            if(err)
+            {
+                console.log('Upload failed')
+            }
+            else{
+                console.log('Upload success')
+                var edit = `UPDATE product SET id_category="${idKategori}", id_size="${prodsize}", 
+                product_name="${prodname}", product_price="${prodprice}", product_detail="${proddetail}", product_image="${prodgambar}"
+                WHERE id = "${idProduk}"`
+                dbs.query(edit,(err,result) => {
+                    if(err) throw err;
+                    else{
+                        res.send('1')
+                    }
+                })
+            }
+        })
+    }
+    else{
+        var edit = `UPDATE product SET id_category="${idKategori}", id_size="${prodsize}", 
+                product_name="${prodname}", product_price="${prodprice}", product_detail="${proddetail}" WHERE id = "${idProduk}"`
+                dbs.query(edit,(err,result) => {
+                    if(err) throw err;
+                    else{
+                        res.send('1')
+                    }
+                })
+    }
+ });
+
+// INI BUAT NAMPILIN PRODUCTSLIST
+app.get('/AllProducts', (req, res) => {
+    var panggilData = 'SELECT * FROM  product;'
+    panggilData += 'SELECT * FROM  category;'
+    panggilData += 'SELECT * FROM  size'
+    dbs.query(panggilData, (kaloError, hasilQuery) => {
+        if(kaloError)
+        {
+            throw kaloError;
+        } 
+        else 
+        {
+            res.send(hasilQuery);
+        }
+    });
+});
+
+
+
 
 app.listen(port, () => {
     console.log('Server berjalan di port '+port+' ....')

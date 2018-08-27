@@ -1,14 +1,66 @@
 import React, { Component } from 'react';
 import Header from './Header'
+import HeaderLogged from './HeaderLogged'
 import Footer from './Footer'
+import Cookies from 'universal-cookie'
+import axios from 'axios'
 import { Link } from 'react-router-dom';
 
+const cookies = new Cookies();
 
 class productList extends Component {
+    state = {
+        allproducts: [],
+        listkategori: []
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:8002/AllProducts')
+        .then((getdata) => {
+            this.setState({
+                allproducts : getdata.data[0],
+                listkategori: getdata.data[1]
+            })
+            console.log(this.state.allproducts)
+            console.log(this.state.listkategori)
+        })
+    }
     render() {
+        
+        let mycookie = cookies.get('sessioniduser');
+        let navigation = (mycookie !== undefined) ? <HeaderLogged /> : <Header />
+
+        const productlist = this.state.allproducts.map((item, index) =>{
+            var productid = item.id;
+            var productpic = item.product_image;
+            var prodprice = item.product_price;
+            var prodname = item.product_name;
+
+            return <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
+                <div className="product-image-wrapper" style={{padding: 10}}>
+                    <div className="single-products">
+                        <div className="productinfo text-center" style={{padding: 10}}>
+                            <Link to={{ pathname: '/ProductDetail', state: {idproduct: productid}}}>
+                                <img src={'http://localhost:8002/images/' + productpic} alt />
+                                <h6>IDR {prodprice}</h6>
+                                <p style={{fontWeight: "bold"}}>{prodname}</p>
+                            </Link>
+                            <a href="#" type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>ADD TO CART</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        })
+        const categorylist = this.state.listkategori.map((item, index) =>{
+            var categoryid = item.id;
+            var categoryname = item.category_name;
+
+            return<li value={categoryid}><a href="#tshirt" data-toggle="pill">{categoryname}</a></li>
+        })
+
         return (
             <div className="container animico-txt3b" style={{marginTop: 100}}>
-            <Header />
+            {navigation}
             
                 {/* TITLE */}
                 <div style={{textAlign: 'center'}} className="container">
@@ -32,7 +84,7 @@ class productList extends Component {
                         <div className="col-md-6">
                         <p className="animico-txt2b" style={{fontSize: 12}}>ANIMICO BACKPACK</p>
                         <p className="animico-txt5b" style={{fontSize: 20}}> FEMINE ADVENTURE </p>
-                        <a href="p" className="btn animico-btnb animico-txt1" style={{marginTop: 20}}>MORE INFO</a>
+                        <a href="/ProductDetail" className="btn animico-btnb animico-txt1" style={{marginTop: 20}}>MORE INFO</a>
                         </div>
                         <div className="col-md-6">
                         <img src="img/Products/Product Detail/Backpack Pink.png" />
@@ -55,9 +107,7 @@ class productList extends Component {
                 <div className="container" style={{paddingBottom: 100, paddingTop: 30}}>
                     <div>
                     <ul className="col-md-2 nav anim-nav-pills nav-stacked animico-txt2 shadow" style={{backgroundColor: '#dddddd'}}>
-                        <li className="active"><a href="#tshirt" data-toggle="pill">Tshirt</a></li>
-                        <li><a href="#hoodie" data-toggle="pill">Hoodie</a></li>
-                        <li><a href="#backpack" data-toggle="pill">Backpack</a></li>
+                        {categorylist}
                     </ul>
                     <div>
                     </div>    
@@ -65,120 +115,7 @@ class productList extends Component {
                     <div className="tab-content col-md-10">
                     <div className="tab-pane active" id="tshirt">
                         <div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}>
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="#" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}>
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="#" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}>
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="/ProductDetail" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}> 
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="/ProductDetail" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}>
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="#" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}>
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="#" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}>
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="/ProductDetail" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-3" style={{padding: 10, border: '6px solid #ffffff', backgroundColor: '#dddddd'}}>
-                            <div className="product-image-wrapper" style={{padding: 10}}> 
-                            <div className="single-products">
-                                <div className="productinfo text-center" style={{padding: 10}}>
-                                <a href="/ProductDetail">
-                                    <img src="img/Products/Product Detail/Whale Tshirt Fix.png" alt />
-                                    <h6>IDR 90.000</h6>
-                                    <p>Easy Polo Black Edition</p>
-                                </a>
-                                <a href="/ProductDetail" className="btn animico-btnc animico-txt5">Add to cart</a>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
+                            {productlist}
                         </div>
                     </div>
                     <div className="tab-pane" id="hoodie">

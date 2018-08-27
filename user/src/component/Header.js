@@ -24,42 +24,22 @@ class Header extends Component {
             <ul className="nav navbar-nav navbar-right">
               <li><a href="/Homepage">Home</a></li>
               <li className="dropdown">
-                <a href="#" className="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Categories<span className="caret" /></a>
-                <ul className="dropdown-menu anim-dropdown-menu animico-txt2b">
-                  <li><a href="/ProductList">New Arrivals</a></li>
-                  <li role="separator" className="divider" />
-                  <li><a href="/ProductList">T-Shirt</a></li>
-                  <li><a href="/ProductList">Hoodie</a></li>
-                  <li><a href="/ProductList">Backpack</a></li>
-                  <li role="separator" className="divider" />
-                  <li><a href="/ProductList">All Products</a></li>
-                </ul>
+                <a href="/ProductList" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
               </li>
               <li><a href="#">Store Location</a></li>
               <div className="btn-group">
-                <button type="button" className="btn animico-btnc dropdown-toggle animico-txt4" data-toggle="dropdown" style={{marginRight: 10}}>
+                <Link to="/Cart" type="button" className="btn animico-btnc animico-txt4" style={{marginRight: 10}}>
                   <img src="img/Icon/shopping-cart.png" style={{width: 20, height: 20}} />   
-                  <span className="animico-txt1b badge anim-badge badge-warning">2</span>
-                </button>
-                <ul className="dropdown-menu anim-dropdown-menu animico-txt2b" role="menu" style={{textAlign: 'center'}}>
-                  <p>Animico Backpack A Black</p>
-                  <p>IDR 200.000</p>
-                  <li className="divider" />
-                  <p>Animico T-Shirt Whale</p>
-                  <p>IDR 120.000</p>
-                  <li className="divider" />
-                  <p>Total IDR 320.000</p>
-                  <a href="Cart"><button type="button" className="btn animico-btnc animico-txt5">Cart</button></a>
-                  <a href="Checkout"><button type="button" className="btn animico-btnc animico-txt5">Checkout</button></a>  
-                </ul>
+                  <span className="animico-txt1b badge anim-badge badge-warning">0</span>
+                </Link>
               </div>
               <div className="btn-group">
                 <button type="button" className="btn animico-btnc animico-txt5b dropdown-toggle animico-txt5" data-toggle="dropdown" style={{marginRight: 10}}>
                   <img src="img/Icon/user.png" style={{width: 20, height: 20}} />
                 </button>
                 <ul className="dropdown-menu anim-dropdown-menu animico-txt2b" role="menu">
-                  <li><a href="/Profile">View Profile</a></li>
-                  <li><a href="/Login">Log Out</a></li>
+                  <li><a href="/Login">Login</a></li>
+                  <li><a href="/Register">Register</a></li>
                 </ul>
               </div>
               <li>

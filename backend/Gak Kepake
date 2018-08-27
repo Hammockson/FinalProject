@@ -1,0 +1,51 @@
+
+// BELOM KEPAKE
+
+// /** UNTUK EDIT KATEGORI*/
+// app.post('/EditCategory', (req, res) => {
+//     var id = req.body.id;
+//     var namaProduk = req.body.namaproduk;
+//     var hargaProduk = req.body.harga;
+//     var fileName = req.files.file.name;
+
+// // Ketika dapat kiriman yang berbentuk files maka akan dijalankan fungsi ini
+//     if(req.files){
+        
+//         var fungsiFile = req.files.file;
+
+//         fungsiFile.mv("./tampunganFile/"+fileName, (kaloError) => {
+//             if(kaloError){
+//                 console.log(kaloError);
+//                 res.send('Upload failed');
+//             } else {
+//                 res.send('Upload berhasil');
+//             }
+//         })
+//     }
+
+//     var queryUpdate = `UPDATE produk_samid SET nama_produk = "${namaProduk}", 
+//                         harga = "${hargaProduk}", foto_produk = "${fileName}" WHERE id="${id}"`;
+//     dbs.query(queryUpdate, (err, result) => {
+//         if(err){
+//             throw err;
+//         } else {
+//             res.send('Update berhasil !');
+//         }
+//     });
+
+// });
+
+// app.get('/getdata/:id', (req, res) => {
+//     /** Menyiapkan query untuk ke MySQL */
+//     var grabData = `SELECT * FROM produk_samid WHERE id = ${req.params.id}`;
+//     /** Mengeksekusi query dengan syntax nodeJS */
+//     dbs.query(grabData, (err, hasilquery) => {
+//         if(err){
+//             /** Mengeluarkan pesan error apabila terjadi kesalahan */
+//             throw err;
+//         } else {
+//             /** Menyiapkan hasil query untuk siap dikirim */
+//             res.send(hasilquery);
+//         }
+//     })
+// });

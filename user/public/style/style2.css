@@ -316,11 +316,10 @@ hr {
 /* ---------------------------------------------CONTAINER-------------------------------------- */
 
 .anim-container {
-  /* width: 100%; */
+  width: 100%;
   background: url(../img/bg1.jpg) no-repeat center;
   height: 100%;
   margin: 0 auto;
-  height: 100%; 
 }
 
 .anim-container2 {
@@ -709,7 +708,7 @@ hr {
     background-color: #009946;
     border-color: #ffffff solid;
     border: 2px solid;
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btn:hover 
@@ -717,7 +716,7 @@ hr {
     color:white;
     background-color: #222;
     border: 2px solid;
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btn.active
@@ -725,7 +724,7 @@ hr {
   color:white;
   background-color: #161616;
   border: 2px solid;
-  border-radius: 0%;
+  border-radius: 2rem;
 }
 
 .animico-btnb 
@@ -734,7 +733,7 @@ hr {
     background-color: #222;
     /* border-color: #ffffff; */
     /* border: 2px solid; */
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnb:hover 
@@ -743,7 +742,7 @@ hr {
     background-color: #009946;
     /* border-color: #161616 solid; */
     /* border: 2px solid; */
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnb.active
@@ -752,7 +751,7 @@ hr {
   background-color: #161616;
   /* border-color: #161616 solid; */
   /* border: 2px solid; */
-  border-radius: 0%;
+  border-radius: 2rem;
 }
 
 .animico-btnc 
@@ -761,7 +760,7 @@ hr {
     background-color: #009946;
     /* border-color: #ffffff; */
     /* border: 2px solid; */
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnc:hover 
@@ -770,7 +769,7 @@ hr {
     background-color: #222;
     /* border-color: #161616 solid; */
     /* border: 2px solid; */
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnc.active
@@ -779,7 +778,7 @@ hr {
   background-color: #222;
   /* border-color: #161616 solid; */
   /* border: 2px solid; */
-  border-radius: 0%;
+  border-radius: 2rem;
 }
 
 .animico-btnc2 
@@ -788,7 +787,7 @@ hr {
     background-color: #009946;
     /* border-color: #ffffff;
     border: 1px solid; */
-    border-radius: 0%;
+    border-radius: 2rem;
     padding-top: 4px;
     padding-right: 8px;
     padding-bottom: 4px;
@@ -802,7 +801,7 @@ hr {
     background-color: #222;
     /* border-color: #161616 solid; */
     /* border: 2px solid; */
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnc2.active
@@ -811,7 +810,7 @@ hr {
   background-color: #222;
   /* border-color: #161616 solid; */
   /* border: 2px solid; */
-  border-radius: 0%;
+  border-radius: 2rem;
 }
 
 .animico-btnd 
@@ -819,7 +818,7 @@ hr {
     color:#303030;
     background-color: transparent;
     border: 2px solid #303030;
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnd:hover 
@@ -827,7 +826,7 @@ hr {
     color:white;
     background-color: #303030;
     border: 2px  solid #303030;
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 .animico-btnd.active
@@ -836,7 +835,7 @@ hr {
   background-color: #222;
   border-color: #303030 solid;
   border: 2px;
-  border-radius: 0%;
+  border-radius: 2rem;
 }
 
 .animico-btn2
@@ -844,14 +843,14 @@ hr {
     color:white;
     background-color: #161616;
     border: 0px;
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 .animico-btn2:hover
 {
     color:white;
     background-color: #f83a3a;
     border: 0px;
-    border-radius: 0%;
+    border-radius: 2rem;
 }
 
 /* ---------------------------------------------SEACRH FORM-------------------------------------- */

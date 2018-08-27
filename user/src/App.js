@@ -13,6 +13,7 @@ import ProductDetail from './component/ProductDetail';
 import ProductDetailWishlist from './component/ProductDetailWishlist';
 import ProductList from './component/ProductList';
 import { Route } from 'react-router-dom';
+import Logout from './component/Logout';
 
 
 
@@ -23,6 +24,7 @@ class App extends Component {
       <Route exact path="/" component={Homepage}/>
       <Route path="/Homepage" component={Homepage}/>
       <Route path="/Login" component={Login}/>
+      <Route path="/Logout" component={Logout}/>
       <Route path="/Register" component={Register}/>
       <Route path="/Cart" component={Cart}/>
       <Route path="/Checkout" component={Checkout}/>

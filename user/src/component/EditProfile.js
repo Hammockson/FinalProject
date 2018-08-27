@@ -1,10 +1,21 @@
 import React, { Component } from 'react';
 import Header from './Header'
 import Footer from './Footer'
-import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie'
+import HeaderLogged from './HeaderLogged'
+import { Link, Redirect } from 'react-router-dom';
+
+const cookies = new Cookies()
 
 class EditProfile extends Component {
     render() {
+        if(cookies.get('sessioniduser') === undefined) {
+            return <Redirect to="/Login"/>
+        }
+
+        
+        let mycookie = cookies.get('sessioniduser');
+        let navigation = (mycookie !== undefined) ? <HeaderLogged /> : <Header />
         return (
             <div>
                 <Header />
@@ -61,9 +72,9 @@ class EditProfile extends Component {
                             <div className="form-group">
                             <label className="col-md-3 control-label" />
                             <div className="col-md-8">
-                                <input type="button" className="btn animico-btnb" defaultValue="Save Changes" />
+                                <input type="button" className="btn animico-btnc" defaultValue="Save Changes" />
                                 <span />
-                                <input type="reset" className="btn btn-default" defaultValue="Cancel" />
+                                <input type="reset" className="btn animico-btnb" defaultValue="Cancel" />
                             </div>
                             </div>
                         </form>

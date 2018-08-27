@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import axios from 'axios'
 import Cookies from 'universal-cookie'
 
@@ -30,33 +30,34 @@ state= {
     render() {
       if(this.state.statusRedirect) return <Redirect to="/Homepage"/>
         return (
-            
-          <div className="row" style={{marginTop: 150}}>
-  <div className="col-md-4" />
-  <div className="col-md-4" style={{textAlign: 'center'}}>
-    <div>
-      <h1>ADMIN Login</h1>
-    </div>
-    <form>
-    <div className="form-group" style={{marginTop: 50}}>
-      <label htmlFor="exampleInputEmail1">Username</label>
-      <input ref="username" type="text" className="form-control"  placeholder="Username" />
-      <small className="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div className="form-group">
-      <label htmlFor="exampleInputPassword1">Password</label>
-      <input ref="password" type="password" className="form-control" placeholder="Password" />
-    </div>
-    <button onClick={() => this.fungsiLogin(this.refs)} type="button" className="btn btn-primary">
-      LOGIN
-    </button>
-    </form>
-  </div>
-  <div className="col-md-4" />
-</div>
-
-
+          <div className="container">
+          <div className="row">
+            <div className="col-md-4" />
+            <div className="col-md-4" style={{textAlign: 'center', marginTop: 150}}>
+              <div>
+                <div>
+                  <img src="images/logo5.png" />
+                </div>
+                <h2 style={{marginTop: 50}}>Login</h2>
+                Please enter your email and password
+              </div>
+              <form>
+                <div className="form-group">
+                  <input type="email" ref='username' className="form-control" id="inputEmail" placeholder="Email Address" />
+                </div>
+                <div className="form-group">
+                  <input type="password" ref='password' className="form-control" id="inputPassword" placeholder="Password" />
+                </div>
+                <button onClick={() => this.fungsiLogin(this.refs)} type="button" className="btn btn-green">
+                LOGIN
+              </button>
+              </form>
+              <div className="col-md-4" />
+            </div>
+          </div>
+        </div>
         );
     }
 }
 export default Login;
+

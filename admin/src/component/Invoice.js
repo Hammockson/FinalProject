@@ -13,7 +13,7 @@ class Invoice extends Component {
                     <Link to="/Historytrans" className="fa fa-angle-left"><span>BACK TO HISTORY</span></Link>
                   </div>
                   {/* INVOICE */}
-                  <div className="col-md-12" style={{backgroundColor: '#3e3f3a', padding: 50}}>
+                  <div className="col-md-12" style={{ padding: 50}}>
                     <div className="row animico-txt3"> 
                       <div className="col-md-12" style={{textAlign: 'center'}}>
                         <h2>INVOICE</h2>
@@ -32,7 +32,7 @@ class Invoice extends Component {
                         
                       </div>
                     </div>
-                    <div style={{backgroundColor: '#3e3f3a'}}>
+                    <div>
                       <table className="table anim-table">
                         <thead className="thead-dark">
                           <tr>

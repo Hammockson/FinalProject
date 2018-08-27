@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 05, 2018 at 06:12 PM
+-- Generation Time: Aug 27, 2018 at 06:27 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.7
 
@@ -56,8 +56,8 @@ CREATE TABLE `category` (
 
 INSERT INTO `category` (`id`, `category_name`) VALUES
 (1, 'Tshirt'),
-(2, 'Hoodie'),
-(3, 'Shirt');
+(3, 'Shirts'),
+(9, 'Hoodie');
 
 -- --------------------------------------------------------
 
@@ -80,8 +80,25 @@ CREATE TABLE `product` (
 --
 
 INSERT INTO `product` (`id`, `id_category`, `id_size`, `product_name`, `product_price`, `product_detail`, `product_image`) VALUES
-(2, 2, 3, 'Jaket Tentara', '2000000000', 'Gokil', ''),
-(3, 3, 2, 'Kemeja Anjing', '9000000', 'Kemeja', '');
+(9, 1, 3, 'Cat Person', '90000', 'Tshirt for cat Lovers', '3.png'),
+(10, 1, 3, 'Dog Person', '90000', 'Tshirt for Dog Lover', '1.png'),
+(11, 1, 3, 'Cat Squad', '90000', 'Tshirt for Cat Lovers', '5.png'),
+(12, 1, 3, 'Dog Squad', '90000', 'Tshirt for Dog Lovers', '4.png'),
+(13, 1, 3, 'Best Buddy', '90000', 'Tshirt for Animal Lovers', 'Black.png'),
+(15, 1, 3, 'Snake Master', '90000', 'Tshirt for Snake Lovers', 'Snake Tshirt Fix.png'),
+(16, 1, 3, 'Owl Spirit', '90000', 'Tshirt for Owl Lovers', 'Owl Fix.png'),
+(17, 1, 3, 'Whale Spirit', '90000', 'Tshirt for Whale Lovers', 'Whale Tshirt Fix.png'),
+(18, 9, 4, 'Bull Power', '135000', 'Bull Hoodie', 'Hoodie2.png'),
+(19, 9, 4, 'Iguana Style', '135000', 'Iguana Hoodie', 'Hoodie3.png'),
+(20, 9, 4, 'Cat Spirit', '135000', 'Cat Hoodie', 'Hoodie5.png'),
+(21, 9, 1, 'Dog Spirit', '135000', 'Dog Hoodie', 'Hoodie6.png'),
+(22, 9, 4, 'Snake Master', '135000', 'Snake Master Hoodie', 'Hoodie4.png'),
+(23, 9, 4, 'Zebra', '135000', 'Zebra Hoodie', 'Hoodie-Zebra.png'),
+(24, 3, 3, 'Mix Animal ', '110000', 'Animal Mix White Shirt', 'Shirt4.png'),
+(25, 3, 3, 'Animal Mix Brown', '110000', 'Animal Mix Brown Shirt', 'Shirt2.png'),
+(26, 3, 3, 'Animal Mix Blue', '110000', 'Animal Mix Blue Shirt', 'Shirt1.png'),
+(27, 1, 3, 'Mix Animal Light Blue', '110000', 'Mix Animal Light Blue Shirt', 'Shirt3.png'),
+(28, 3, 3, 'Mix Animal Yellow', '11000', 'Mix Animal Yellow Shirt', 'Shirt5.png');
 
 -- --------------------------------------------------------
 
@@ -154,6 +171,14 @@ CREATE TABLE `user_client` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
+-- Dumping data for table `user_client`
+--
+
+INSERT INTO `user_client` (`id`, `firstname`, `lastname`, `username`, `password`, `avatar`, `email`, `phone`, `address`) VALUES
+(1, 'Judis', 'Adama', 'kartoyo', '555', '', 'esa@purwa.com', '', ''),
+(2, 'KAShjks', 'asdad', 'wewqe', 'asas@dss.com', '', '666666', '', '');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -215,13 +240,13 @@ ALTER TABLE `billing_address`
 -- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `product`
 --
 ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT for table `quantity`
@@ -245,7 +270,7 @@ ALTER TABLE `user_admin`
 -- AUTO_INCREMENT for table `user_client`
 --
 ALTER TABLE `user_client`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

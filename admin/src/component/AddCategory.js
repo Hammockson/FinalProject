@@ -29,8 +29,8 @@ class AddCategory extends Component {
         return (
             <div className="main-content" style={{marginTop: 100}}>
             <Header />
-              <div className="modal-dialog modal-sm" role="document">
-                <div className="modal-content">
+              <div className="modal-dialog modal-sm" role="document" >
+                <div className="modal-content" style={{backgroundColor: '#a4a7ad', marginTop: 50}}>
                   <div className="modal-header">
                     <h5 className="modal-title" id="smallmodalLabel">Add Category</h5>
                     
@@ -42,11 +42,15 @@ class AddCategory extends Component {
                     </div>
                   </div>
                   <div className="modal-footer">
-                    <Link to="/Category" type="button" className="btn btn-danger">
+                    <Link to="/Category" >
+                    <button type="button" className="btn btn-danger">
                         CANCEL
+                        </button>
                     </Link>
-                    <Link to="#" type="button" onClick={() => this.tambahData(this.refs)} className="btn btn-primary">
+                    <Link to="#" >
+                    <button type="button" onClick={() => this.tambahData(this.refs)} className="btn btn-primary">
                         ADD
+                        </button>
                     </Link>
                     
                   </div>

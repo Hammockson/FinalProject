@@ -1,13 +1,36 @@
 import React, { Component } from 'react';
 import Header from './Header'
+import HeaderLogged from './HeaderLogged'
+import Cookies from 'universal-cookie'
 import Footer from './Footer'
+import axios from 'axios'
 import { Link } from 'react-router-dom';
 
+const cookies = new Cookies();
+
 class Homepage extends Component {
+    state = {
+        allproducts: []
+    }
+
+    componentDidMount(){
+        axios.get('http://localhost:8002/AllProducts')
+        .then((getdata) => {
+            this.setState({
+                allproducts : getdata.data
+            })
+            console.log(this.state.allproducts)
+        })
+    }
+
     render() {
+
+        let mycookie = cookies.get('sessioniduser');
+        let navigation = (mycookie !== undefined) ? <HeaderLogged /> : <Header />
+
         return (
             <div>
-                <Header />
+                {navigation}
                 {/* SLIDER */}
                 <div className="container-fluid banner"> 
                     <div className="col-md-3" />
@@ -24,7 +47,7 @@ class Homepage extends Component {
                             <p className="animico-txt5b">-Anatole France</p>
                         </div>
                         <div className="col-md-12" style={{marginTop: 40}}>
-                            <a href="/ProductList" className="btn animico-btnc animico-txt1">SHOP NOW</a>
+                        <a href="#" type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>SHOP NOW</a>
                         </div>
                         </div>
                     </div>
@@ -40,7 +63,7 @@ class Homepage extends Component {
                                 <p className="animico-txt3" style={{fontSize: 12}}>PRODUCTS</p>
                             </div>
                             <div style={{textAlign: 'center'}}>
-                                <div className="col-md-4 banner-zebra" style={{border: '6px solid #ffffff', padding: 30}}>
+                                <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
                                 <div>
                                     <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO HOODIE</p>
                                     <p className="animico-txt5" style={{fontSize: 18}}>ZEBRA SQUARE </p>
@@ -48,19 +71,15 @@ class Homepage extends Component {
                                 <a href="/ProductDetail"><img src="img/Products/Product Detail/Hoodie-Zebra.png" /></a>
                                 <span className="label label-success">IDR 130.000</span>
                                 <div style={{padding: 20}}>
-                                    <a href="/ProductDetail">
-                                    <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>
-                                        VIEW DETAIL
-                                    </button>
-                                    </a>
+                                    <a href="/ProductDetail"> <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>VIEW DETAIL</button></a>
                                 </div>
                                 </div>
-                                <div className="col-md-4 banner-panda" style={{border: '6px solid #ffffff', padding: 30}}>
+                                <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
                                 <div>
                                     <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO BACKPACK</p>
                                     <p className="animico-txt5" style={{fontSize: 18}}>PANDA ADVENTURE </p>
                                 </div><br />
-                                <a href="ProductDetail"><img src="img/Products/Product Detail/Backpack-Panda.png" /></a>
+                                <a href="ProductDetail"><img src="img/Products/Product Detail/Shirt4.png" /></a>
                                 <span className="label label-success">IDR 230.000</span>
                                 <div style={{padding: 20}}>
                                     <a href="ProductDetail">
@@ -70,7 +89,7 @@ class Homepage extends Component {
                                     </a>
                                 </div>
                                 </div>
-                                <div className="col-md-4 banner-owl" style={{border: '6px solid #ffffff', padding: 30}}>
+                                <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
                                 <div>
                                     <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO TSHIRT</p>
                                     <p className="animico-txt5" style={{fontSize: 18}}>OWL SPIRIT </p>
@@ -154,7 +173,7 @@ class Homepage extends Component {
                                         </div>
                                         <div style={{paddingTop: 10}}>
                                             <a href="#" type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>ADD TO CART</a>
-                                            <a href="#" type="submit" className="fa fa-heart btn animico-btn2" style={{padding: 8}} />
+                                            {/* <a href="#" type="submit" className="fa fa-heart btn animico-btn2" style={{padding: 8}} /> */}
                                         </div>
                                         </div>
                                     </div>
@@ -208,7 +227,7 @@ class Homepage extends Component {
                                         </div>
                                         <div style={{paddingTop: 10}}>
                                             <a href="#" type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>ADD TO CART</a>
-                                            <a href="#" type="submit" className="fa fa-heart btn animico-btn2" style={{padding: 8}} />
+                                            {/* <a href="#" type="submit" className="fa fa-heart btn animico-btn2" style={{padding: 8}} /> */}
                                         </div>
                                         </div>
                                     </div>
@@ -226,7 +245,7 @@ class Homepage extends Component {
                                     <div className="col-md-8">
                                         <div className="col-md-6">
                                         <div style={{textAlign: 'center'}}>
-                                        <a href="ProductDetail"><img src="img/Products/Product Detail/Backpack-Panda.png" style={{maxWidth: '100%'}} /></a>
+                                        <a href="ProductDetail"><img src="img/Products/Product Detail/Shirt4.png" style={{maxWidth: '100%'}} /></a>
                                         </div>
                                         </div>
                                         <div className="col-md-6" style={{paddingBottom: 30, paddingTop: 30}}>
@@ -262,7 +281,7 @@ class Homepage extends Component {
                                         </div>
                                         <div style={{paddingTop: 10}}>
                                             <a href="#" type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>ADD TO CART</a>
-                                            <a href="#" type="submit" className="fa fa-heart btn animico-btn2" style={{padding: 8}} />
+                                            {/* <a href="#" type="submit" className="fa fa-heart btn animico-btn2" style={{padding: 8}} /> */}
                                         </div>
                                         </div>
                                     </div>
@@ -287,7 +306,7 @@ class Homepage extends Component {
                         <div className="animico-txt3" style={{textAlign: 'center', padding: 30}}>
                         <h5 className="animico-txt4">SEE MORE IN</h5>
                         <h3 className="animico-txt1">ALL <span className="animico-txt5">COLLECTIONS</span></h3>
-                        <a href="/ProductList" className="btn animico-btnc animico-txt3">ALL COLLECTION</a>
+                        <a href="/ProductDetail"> <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>ALL COLLECTION</button></a>
                         </div>
                     </div>
                 </div>
@@ -296,14 +315,14 @@ class Homepage extends Component {
                     <div className="col-md-6 animico-txt2b banner-promo-left" style={{backgroundColor: '#162345', textAlign: 'center', padding: 31}}>
                         <p>COMING SOON!</p>
                         <h1 className="animico-txt5b">ANIMICO <span className="animico-txt1b">SHOES</span></h1>
-                        <p>Get Special Price for Pre Order</p>
-                        <a href="/ProductList" className="btn animico-btnb animico-txt1" style={{marginTop: 20}}>Pre Order Now</a>
+                        <p>Stay Tuned!</p>
+                        {/* <a href="/ProductList" className="btn animico-btnb animico-txt1" style={{marginTop: 20}}>Pre Order Now</a> */}
                     </div>
                     <div className="col-md-6 animico-txt2b banner-promo-right" style={{backgroundColor: '#121d39', textAlign: 'center', padding: 31}}>
-                        <p>ALL BACKPACK!</p>
-                        <h1 className="animico-txt5b">DISCOUNT <span className="animico-txt1b">30%</span></h1>
-                        <p>Grab em'now!</p>
-                        <a href="/ProductList" className="btn animico-btnc animico-txt1" style={{marginTop: 20}}>See Collection</a>
+                    <p>COMING SOON!</p>
+                        <h1 className="animico-txt5b">ANIMICO <span className="animico-txt1b">BACKPACK</span></h1>
+                        <p>Stay Tuned!</p>
+                        {/* <a href="/ProductList" className="btn animico-btnc animico-txt1" style={{marginTop: 20}}>See Collection</a> */}
                     </div>
                 </div>
                 {/* NEWSLETTER */}
@@ -321,7 +340,7 @@ class Homepage extends Component {
                                 <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
                             </div>
                             <div style={{textAlign: 'center', padding: 10}}>
-                                <a href="#" type="submit" className="btn animico-btnc animico-txt3">SUBSCRIBE</a>
+                            <a href="/ProductDetail"> <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>SUBSCRIBE</button></a>
                             </div>
                             </form>
                         </div>

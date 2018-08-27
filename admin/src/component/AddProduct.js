@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import Header from './Header';
+import Sidebar from './Sidebar';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
-class AddCategory extends Component {
+class AddProduct extends Component {
   state = {
     redirect: false,
     listukuran: [],
@@ -14,8 +14,8 @@ class AddCategory extends Component {
     hargaproduk: '',
     detailproduk: '',
     gambarproduk: '',
-
 }
+
 componentDidMount(){
   axios.get('http://localhost:8002/AddProduct').then(
       (ambilData) => {
@@ -42,21 +42,21 @@ gambar = (e) => {
   }
 }
 
-  tambahData = (e) => {
-    var kategoriID = e.listkategori.value;
-    var ukuranproduk = e.listukuran.value;
-    var namaproduk = e.namaproduk.value;
-    var hargaproduk = e.hargaproduk.value;
-    var detailproduk = e.detailproduk.value;
+tambahData = (e) => {
+  var kategoriID = e.listkategori.value;
+  var ukuranproduk = e.listukuran.value;
+  var namaproduk = e.namaproduk.value;
+  var hargaproduk = e.hargaproduk.value;
+  var detailproduk = e.detailproduk.value;
 
-          this.setState({
-            kategoriID: kategoriID,
-            ukuranproduk: ukuranproduk,
-            namaproduk: namaproduk,
-            hargaproduk: hargaproduk,
-            detailproduk: detailproduk,
-          }) 
-        }
+        this.setState({
+          kategoriID: kategoriID,
+          ukuranproduk: ukuranproduk,
+          namaproduk: namaproduk,
+          hargaproduk: hargaproduk,
+          detailproduk: detailproduk,
+        }) 
+      }
 
 kirimsemua = (e) => {
   e.preventDefault();
@@ -77,6 +77,7 @@ kirimsemua = (e) => {
       })
     }
   })
+
   // console.log(this.state.kategoriID)
   // console.log(this.state.ukuranproduk)
   // console.log(this.state.namaproduk)
@@ -106,73 +107,82 @@ kirimsemua = (e) => {
       
         return (
 
-            <div className="main-content">
-            <Header />
-              <div className="modal-dialog modal-lg" role="document">
-                <div className="modal-content">
-                  <div className="modal-header">
-                    <h5 className="modal-title" id="largeModalLabel">Add Product</h5>
-                    <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">×</span>
-                    </button>
-                  </div>
-                  <div className="modal-body">
-                    <div className="row anim-loginbox" style={{marginTop: 50}}>
-                      {/* right collum */}
-                      <div className="col-md-12">
-                        <form onSubmit={this.kirimsemua} className="animico-txt2b">
-                          <div>
-                            <label htmlFor="country">Category</label>
-                            <select ref="listkategori" className="form-control square" id="category">
+          <div className="wrapper">
+          {/* Sidebar  */}
+          <Sidebar />
+          {/* Page Content  */}
+          <div id="content">
+            <div className="right_col" role="main">
+              <div className>
+                <div className="page-title">
+                  <div className="title_left" style={{textAlign: 'center'}}>
+                    <h2>Add Product</h2>
+                  </div><br />
+                  <div className="clearfix" />
+                  <div className="row">
+                    <div className="col-md-12">
+                      <form onSubmit={this.kirimsemua} className="form-horizontal form-label-left">
+                        <div className="form-group">
+                          <label className="control-label col-md-3 col-sm-3 col-xs-12">Category</label>
+                          <div className="col-md-3 col-sm-3 col-xs-12">
+                            <select ref="listkategori" className="form-control">
                               {listkategori}
                             </select>
                           </div>
-                          <div>
-                            <label htmlFor="country">Size</label>
-                            <select ref="listukuran" className="form-control square" id="size">
+                        </div>
+                        <div className="form-group">
+                          <label className="control-label col-md-3 col-sm-3 col-xs-12" htmlFor="first-name">Name <span className="required">*</span>
+                          </label>
+                          <div className="col-md-6 col-sm-6 col-xs-12">
+                            <input ref="namaproduk" type="text" required="required" className="form-control col-md-7 col-xs-12" />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label className="control-label col-md-3 col-sm-3 col-xs-12" htmlFor="last-name">Price <span className="required">*</span>
+                          </label>
+                          <div className="col-md-6 col-sm-6 col-xs-12">
+                            <input ref="hargaproduk" type="number"  required="required" className="form-control col-md-7 col-xs-12" />
+                          </div>
+                        </div>
+                        <div className="form-group">
+                          <label className="control-label col-md-3 col-sm-3 col-xs-12">Size</label>
+                          <div className="col-md-3 col-sm-3 col-xs-12">
+                            <select ref="listukuran" className="form-control">
                               {listukuran}
                             </select>
                           </div>
-                          <div className="form-group">
-                            <label htmlFor="exampleInputName">Product Name</label>
-                            <input ref="namaproduk" type="text" className="form-control"  placeholder="Enter Product Name" />
+                        </div>
+                        <div className="form-group">
+                          <label className="control-label col-md-3 col-sm-3 col-xs-12" htmlFor="first-name">Image <span className="required">*</span>
+                          </label>
+                          <div className="col-md-6 col-sm-6 col-xs-12">
+                            <input name="gambarproduk" onChange={this.gambar} type="file" required="required" className="form-control col-md-7 col-xs-12" />
                           </div>
-                          <div className="form-group">
-                            <label htmlFor="exampleInputPrice">Product Price</label>
-                            <input ref="hargaproduk" type="number" className="form-control"  placeholder="Enter Price" />
-                          </div>   
-                          <div className="form-group">
-                            <label htmlFor="exampleInputName">Product Image</label>
-                            <input ref="gambarproduk" name="gambarproduk" onChange={this.gambar} type="file" className="form-control" />
+                        </div>
+                        <div className="form-group">
+                          <label className="control-label col-md-3 col-sm-3 col-xs-12">Detail <span className="required">*</span>
+                          </label>
+                          <div className="col-md-6 col-sm-6 col-xs-12">
+                            <textarea ref="detailproduk" type="text" className="form-control col-md-7 col-xs-12" placeholder="Enter Detail" defaultValue={""} />
                           </div>
-                          <div className="form-group">
-                            <label htmlFor="exampleInputPrice">Product Detail</label>
-                            <textarea ref="detailproduk" type="price" className="form-control"  placeholder="Enter Detail"></textarea>
+                        </div>
+                        <div className="ln_solid" />
+                        <div className="form-group">
+                          <div className="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <a href="/Products"><button className="btn btn-red" type="button">Cancel</button></a>
+                            <button type="submit" onClick={() => this.tambahData(this.refs)} className="btn btn-green">Submit</button>
                           </div>
-
-                          <div className="modal-footer">
-                            <Link to="/Products" type="button" className="btn btn-danger">
-                                CANCEL
-                            </Link>
-                            <button type="submit" onClick={() => this.tambahData(this.refs)} className="btn btn-primary">
-                                ADD
-                            </button>
-                          </div>   
-                        </form>
-                      </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="col-md-12" style={{textAlign: 'center'}}>
-                <div className="copyright">
-                  <p>Copyright © 2018 Animico. All rights reserved.</p>
-                </div>
-              </div>
             </div>
-
-
+          </div>
+        </div>
+        
         );
     }
 }
-export default AddCategory;
+export default AddProduct;

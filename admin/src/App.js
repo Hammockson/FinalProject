@@ -12,6 +12,7 @@ import EditCategory from './component/EditCategory';
 import AddProduct from './component/AddProduct';
 import EditProduct from './component/EditProduct';
 import Category from './component/Category';
+import Sidebar from './component/Sidebar';
 import { Route } from 'react-router-dom';
 
 
