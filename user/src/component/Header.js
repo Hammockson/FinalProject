@@ -26,11 +26,11 @@ class Header extends Component {
               <li className="dropdown">
                 <a href="/ProductList" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
               </li>
-              <li><a href="#">Store Location</a></li>
+              {/* <li><a href="#">Store Location</a></li> */}
               <div className="btn-group">
                 <Link to="/Cart" type="button" className="btn animico-btnc animico-txt4" style={{marginRight: 10}}>
                   <img src="img/Icon/shopping-cart.png" style={{width: 20, height: 20}} />   
-                  <span className="animico-txt1b badge anim-badge badge-warning">0</span>
+                  <span className="animico-txt1b badge anim-badge badge-warning"></span>
                 </Link>
               </div>
               <div className="btn-group">

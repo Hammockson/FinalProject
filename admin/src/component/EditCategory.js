@@ -59,7 +59,7 @@ change = (e) => {
                         <div className>
                             <div className="page-title">
                             <div className="title_left" style={{textAlign: 'center'}}>
-                                <h2>Edit Category</h2>
+                                <h2><b>Edit Category</b></h2>
                             </div><br />
 
                             <div className="clearfix" />

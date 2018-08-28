@@ -57,7 +57,6 @@ hapusData = (e) => {
               <td scope="col">{kategoriID}</td>
               <td scope="col">{hargaproduk}</td>
               <td scope="col">{gambarproduk}</td>
-              <td scope="col">{ukuranproduk}</td>
               <td scope="col">{detailproduk}</td>
               <td scope="col">
                 <Link to={{
@@ -65,7 +64,6 @@ hapusData = (e) => {
                   state:{
                     prodID: produkID,
                     katID: kategoriID,
-                    prodsize: ukuranproduk,
                     prodnama: namaproduk,
                     prodharga: hargaproduk,
                     prodetail: detailproduk,
@@ -90,7 +88,7 @@ hapusData = (e) => {
       <div className>
         <div className="page-title">
           <div className="title_left">
-            <h2>Products <span><a href="/AddProduct"><button className="btn btn-green">Add Product + </button></a></span></h2>
+            <h2><b>Products </b><span><a href="/AddProduct"><button className="btn btn-green">Add Product + </button></a></span></h2>
           </div>
           <div className="clearfix" />
           <div className="row">
@@ -105,7 +103,6 @@ hapusData = (e) => {
                         <th>CATEGORY</th>
                         <th>PRICE</th>
                         <th>IMAGE</th>
-                        <th>SIZE</th>
                         <th>DETAIL</th>
                         <th>ACTION</th> 
                       </tr>

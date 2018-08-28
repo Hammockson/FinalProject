@@ -10,16 +10,19 @@ const cookies = new Cookies();
 
 class Homepage extends Component {
     state = {
-        allproducts: []
+        allproducts: [],
+        listkategori: []
     }
 
     componentDidMount(){
-        axios.get('http://localhost:8002/AllProducts')
+        axios.get('http://localhost:8002/AllProductsHomepage')
         .then((getdata) => {
             this.setState({
-                allproducts : getdata.data
+                allproducts : getdata.data[0],
+                listkategori: getdata.data[1]
             })
             console.log(this.state.allproducts)
+            console.log(this.state.listkategori)
         })
     }
 
@@ -28,11 +31,42 @@ class Homepage extends Component {
         let mycookie = cookies.get('sessioniduser');
         let navigation = (mycookie !== undefined) ? <HeaderLogged /> : <Header />
 
+        const categorylist = this.state.listkategori.map((item, index) =>{
+            var categoryid = item.id;
+            var categoryname = item.category_name;
+
+            return <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO {categoryname}</p>
+        })
+
+        const productlist = this.state.allproducts.map((item, index) =>{
+            var productid = item.id;
+            var productpic = item.product_image;
+            var prodprice = item.product_price;
+            var prodname = item.product_name
+
+            return <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
+            <div>
+                {categorylist}
+                <p className="animico-txt5" style={{fontSize: 18}}>{prodname}</p>
+            </div><br />
+            <Link to={{ pathname: '/ProductDetail', state: {idproduct: productid}}}>
+            <img src={'http://localhost:8002/images/' + productpic} />
+            </Link>
+            <span className="label label-success">IDR {prodprice}</span>
+            <div style={{padding: 20}}>
+            <Link to={{ pathname: '/ProductDetail', state: {idproduct: productid}}}>
+                <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>VIEW DETAIL</button>
+            </Link>
+            </div>
+            </div>
+        })
+
+        
         return (
             <div>
                 {navigation}
                 {/* SLIDER */}
-                <div className="container-fluid banner"> 
+                <div className="container-fluid banner" style={{marginTop: 40}}> 
                     <div className="col-md-3" />
                     <div className="col-md-6" style={{paddingTop: '5%', textAlign: 'center'}}>
                         <div>
@@ -63,47 +97,7 @@ class Homepage extends Component {
                                 <p className="animico-txt3" style={{fontSize: 12}}>PRODUCTS</p>
                             </div>
                             <div style={{textAlign: 'center'}}>
-                                <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
-                                <div>
-                                    <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO HOODIE</p>
-                                    <p className="animico-txt5" style={{fontSize: 18}}>ZEBRA SQUARE </p>
-                                </div><br />
-                                <a href="/ProductDetail"><img src="img/Products/Product Detail/Hoodie-Zebra.png" /></a>
-                                <span className="label label-success">IDR 130.000</span>
-                                <div style={{padding: 20}}>
-                                    <a href="/ProductDetail"> <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>VIEW DETAIL</button></a>
-                                </div>
-                                </div>
-                                <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
-                                <div>
-                                    <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO BACKPACK</p>
-                                    <p className="animico-txt5" style={{fontSize: 18}}>PANDA ADVENTURE </p>
-                                </div><br />
-                                <a href="ProductDetail"><img src="img/Products/Product Detail/Shirt4.png" /></a>
-                                <span className="label label-success">IDR 230.000</span>
-                                <div style={{padding: 20}}>
-                                    <a href="ProductDetail">
-                                    <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>
-                                        VIEW DETAIL
-                                    </button>
-                                    </a>
-                                </div>
-                                </div>
-                                <div className="col-md-4" style={{border: '6px solid #ffffff', padding: 30}}>
-                                <div>
-                                    <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO TSHIRT</p>
-                                    <p className="animico-txt5" style={{fontSize: 18}}>OWL SPIRIT </p>
-                                </div><br />
-                                <a href="ProductDetail"><img src="img/Products/Product Detail/Owl Fix.png" /></a>
-                                <span className="label label-success">IDR 90.000</span>
-                                <div style={{padding: 20}}>
-                                    <a href="ProductDetail">
-                                    <button className="btn animico-btnc animico-txt5b" style={{fontSize: 12}}>
-                                        VIEW DETAIL
-                                    </button>
-                                    </a>
-                                </div>
-                                </div>
+                                {productlist}
                             </div>
                         </div>
                         <div className="col-md-2" />

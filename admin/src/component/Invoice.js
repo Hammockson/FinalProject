@@ -1,105 +1,101 @@
 import React, { Component } from 'react';
 import Header from './Header';
-import { Link } from 'react-router-dom';
+import Sidebar from './Sidebar';
+import { Link, Redirect } from 'react-router-dom';
+import axios from 'axios';
 
 class Invoice extends Component {
-    render() {
+  state = {
+    datainvoice: [],
+}
+componentDidMount(){
+    axios.get('http://localhost:8002/Invoice').then(
+        (ambilData) => {
+            console.log(ambilData.data);
+            this.setState({
+                datainvoice: ambilData.data
+            });
+        }
+    )
+}
+
+
+  
+  render() {
+
+    const hasil = this.state.datainvoice.map(
+      (isi, urutan) => {
+          var nomor = urutan + 1;
+          var invoiceid = isi.id;
+          var invoicedate = isi.date;
+          var invoicenumber = isi.number;
+          var invoiceammount = isi.ammount;
+            
+          return <tr key={urutan}>
+          <td scope="col">{nomor}</td>
+          <td scope="col">{invoicedate}</td>
+          <td scope="col">{invoicenumber}</td>
+          <td scope="col">{invoiceammount}</td>
+          <td scope="col">
+            <Link to={{
+              // pathname: "/EditProduct",
+              // state:{
+              //   prodID: produkID,
+              //   katID: kategoriID,
+              //   prodnama: namaproduk,
+              //   prodharga: hargaproduk,
+
+
+              // }
+            }}>
+            <button className="btn btn-yellow" style={{fontSize: 12}}><span className="fa fa-edit" aria-hidden="true" />VIEW DETAIL</button></Link>
+          </td>
+        </tr>
+      }
+  );
         return (
-            <div className="main-content">
-            <Header />
-              <div className="main-content">
-                <div className="col-md-12">
-                  <div className="col-md-12">
-                    <Link to="/Historytrans" className="fa fa-angle-left"><span>BACK TO HISTORY</span></Link>
-                  </div>
-                  {/* INVOICE */}
-                  <div className="col-md-12" style={{ padding: 50}}>
-                    <div className="row animico-txt3"> 
-                      <div className="col-md-12" style={{textAlign: 'center'}}>
-                        <h2>INVOICE</h2>
-                        <h4>#001ANM6789</h4>
-                      </div>
-                      <div className="col-md-6">
-                        <h4>BILLED TO:</h4>
-                        <p>ESA ADAMA</p>
-                        <p>JL. SETIABUDI, JAKARTA</p>
-                        <br />
-                        
-                      </div>
-                      <div className="col-md-6" style={{textAlign: 'right'}}>
-                        <h4>ORDER DATE:</h4>
-                        <p>04/06/1989</p>
-                        
+          <div className="wrapper">
+            {/* Sidebar  */}
+            <Sidebar />
+            {/* Page Content  */}
+            <div id="content">
+              <div className="right_col" role="main">
+                <div className>
+                  <div className="page-title">
+                    <div className="title_left">
+                      <h2><b>Invoice </b></h2>
+                    </div>
+                    <div className="clearfix" />
+                    <div className="row">
+                      <div className="col-md-12">
+                        <div className="x_panel">
+                          <div className="x_content">
+                            <table id="datatable" className="table table-striped table-bordered">
+                              <thead>
+                                <tr>
+                                  <th>No.</th>
+                                  <th>Date</th>
+                                  <th>Invoice Number</th>
+                                  <th>Ammount</th>
+                                  <th>Action</th> 
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {hasil}
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                       </div>
                     </div>
-                    <div>
-                      <table className="table anim-table">
-                        <thead className="thead-dark">
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">ITEM</th>
-                            <th scope="col">PRICE ID</th>
-                            <th scope="col">QUANTITY</th>
-                            <th scope="col">TOTALS</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Animico Tshirt "Owl Spirit"</td>
-                            <td>IDR 90.000</td>
-                            <td>3</td>
-                            <td>IDR 270.000</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Animico Backpack "Adventure"</td>
-                            <td>IDR 130.000</td>
-                            <td>1</td>
-                            <td>IDR 130.000</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td>Animico Hoodie "Zebra Square"</td>
-                            <td>IDR 110.000</td>
-                            <td>1</td>
-                            <td>IDR 110.000</td>
-                          </tr>
-                          <tr className="animico-txt5">
-                            <th scope="row" />
-                            <td />
-                            <td />
-                            <td>Subtotal</td>
-                            <td>IDR 510.000</td>
-                          </tr>
-                          <tr className="animico-txt5">
-                            <th scope="row" />
-                            <td />
-                            <td />
-                            <td>Shipping</td>
-                            <td>IDR 50.000</td>
-                          </tr>
-                          <tr className="animico-txt7">
-                            <th scope="row" />
-                            <td />
-                            <td />
-                            <td>TOTAL</td>
-                            <td>IDR 560.000</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>  
-                  {/* INVOICE END */}
-                </div>
-                <div className="col-md-12">
-                  <div className="copyright">
-                    <p>Copyright © 2018 Animico. All rights reserved.</p>
                   </div>
                 </div>
               </div>
             </div>
+          </div>
 
+
+        
         );
     }
 }

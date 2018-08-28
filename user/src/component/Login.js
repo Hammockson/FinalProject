@@ -59,10 +59,10 @@ state= {
                                 <label htmlFor="exampleInputPassword1">Password</label>
                                 <input type="password" ref='password' className="form-control" id="exampleInputPassword1" placeholder="Password" />
                                 </div>
-                                <div className="form-group form-check">
+                                {/* <div className="form-group form-check">
                                 <input type="checkbox" className="form-check-input" id="exampleCheck1" />
                                 <label className="form-check-label" htmlFor="exampleCheck1">Remember Me</label>
-                                </div>
+                                </div> */}
                                 <div style={{textAlign: 'center'}}>
                                 <a onClick={() => this.fungsiLogin(this.refs)} type="submit" className="btn animico-btn animico-txt3">LOGIN</a>
                                 </div>

@@ -296,7 +296,7 @@ hr {
 
 .navbar .nav-collapse { position: absolute; z-index: 1; top: 0; left: 0; right: 0; bottom: 0; margin: 0; padding-right: 300px; padding-left: 80px; width: 100%; }
 .navbar.navbar-default .nav-collapse { background-color: #f1f2f4; }
-.navbar.navbar-inverse .nav-collapse { background-color: #f1f2f4; }
+.navbar.navbar-inverse .nav-collapse { background-color: #d2d2d2; }
 .navbar .nav-collapse .navbar-form { border-width: 0; box-shadow: none; }
 .nav-collapse>li { float: right; }
 
@@ -1021,7 +1021,7 @@ hr {
 
 .control-carousel {
     position: absolute;
-    top: 25%;
+    top: 40%;
     font-size: 60px;
     color: #C2C2C1;
   }
@@ -1037,7 +1037,7 @@ left: 150px;
 /* ---------------------------------------------FOOTER-------------------------------------- */
 
 .footer-distributed{
-	background-color: #f1f2f4;
+	background-color: #d2d2d2;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
 	box-sizing: border-box;
 	width: 100%;

@@ -116,7 +116,7 @@ kirimsemua = (e) => {
               <div className>
                 <div className="page-title">
                   <div className="title_left" style={{textAlign: 'center'}}>
-                    <h2>Add Product</h2>
+                    <h2><b>Add Products</b></h2>
                   </div><br />
                   <div className="clearfix" />
                   <div className="row">

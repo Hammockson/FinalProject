@@ -44,13 +44,14 @@ class productList extends Component {
                                 <img src={'http://localhost:8002/images/' + productpic} alt />
                                 <h6>IDR {prodprice}</h6>
                                 <p style={{fontWeight: "bold"}}>{prodname}</p>
+                                <button type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>VIEW DETAIL</button>
                             </Link>
-                            <a href="#" type="submit" className="btn animico-btnc animico-txt5" style={{fontSize: 10}}>ADD TO CART</a>
                         </div>
                     </div>
                 </div>
             </div>
         })
+
         const categorylist = this.state.listkategori.map((item, index) =>{
             var categoryid = item.id;
             var categoryname = item.category_name;
@@ -59,7 +60,7 @@ class productList extends Component {
         })
 
         return (
-            <div className="container animico-txt3b" style={{marginTop: 100}}>
+            <div className="container-fluid animico-txt3b" style={{marginTop: 100}}>
             {navigation}
             
                 {/* TITLE */}
@@ -358,8 +359,9 @@ class productList extends Component {
                 </div>
                 {/* PRODUCTS END*/}
                 <br /><br />
-
                 <Footer />
+
+                
             </div>
 
         );

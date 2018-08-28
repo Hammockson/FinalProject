@@ -1,8 +1,29 @@
 import React, { Component } from 'react';
+import Cookies from 'universal-cookie'
+import axios from 'axios'
 import { Link } from 'react-router-dom';
 
+const cookies = new Cookies();
+
 class Header extends Component {
+  state = {
+    datauser : ''
+  }
+
+  componentDidMount(){
+    var mycookie = cookies.get('sessioniduser');
+    axios.post('http://localhost:8002/TotalCartHeader', {
+        iduser : mycookie
+        })
+        .then((getData) => {
+          this.setState({
+            datauser: getData.data
+          })
+        })
+}
+
     render() {
+      
         return (
             
       <div className="container-fluid">
@@ -26,23 +47,12 @@ class Header extends Component {
               <li className="dropdown">
                 <a href="/ProductList" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
               </li>
-              <li><a href="#">Store Location</a></li>
+              {/* <li><a href="#">Store Location</a></li> */}
               <div className="btn-group">
-                <button type="button" className="btn animico-btnc dropdown-toggle animico-txt4" data-toggle="dropdown" style={{marginRight: 10}}>
+              <Link to="/Cart" type="button" className="btn animico-btnc animico-txt4" style={{marginRight: 10}}>
                   <img src="img/Icon/shopping-cart.png" style={{width: 20, height: 20}} />   
-                  <span className="animico-txt1b badge anim-badge badge-warning">2</span>
-                </button>
-                <ul className="dropdown-menu anim-dropdown-menu animico-txt2b" role="menu" style={{textAlign: 'center'}}>
-                  <p>Animico Backpack A Black</p>
-                  <p>IDR 200.000</p>
-                  <li className="divider" />
-                  <p>Animico T-Shirt Whale</p>
-                  <p>IDR 120.000</p>
-                  <li className="divider" />
-                  <p>Total IDR 320.000</p>
-                  <a href="Cart"><button type="button" className="btn animico-btnc animico-txt5">Cart</button></a>
-                  <a href="Checkout"><button type="button" className="btn animico-btnc animico-txt5">Checkout</button></a>  
-                </ul>
+                  <span className="animico-txt1b badge anim-badge badge-warning">{this.state.datauser}</span>
+                </Link>
               </div>
               <div className="btn-group">
                 <button type="button" className="btn animico-btnc animico-txt5b dropdown-toggle animico-txt5" data-toggle="dropdown" style={{marginRight: 10}}>

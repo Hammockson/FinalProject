@@ -92,7 +92,7 @@ class Products extends Component {
                     <div className>
                         <div className="page-title">
                         <div className="title_left">
-                            <h2>Categories <span><button className="btn btn-green" data-toggle="modal" data-target="#exampleModalCenter">Add Category + </button></span></h2>
+                            <h2><b>Categories </b><span><button className="btn btn-green" data-toggle="modal" data-target="#exampleModalCenter">Add Category + </button></span></h2>
                         </div>
                         {/* Modal */}
                         <div className="modal fade" id="exampleModalCenter" tabIndex={-1} role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
