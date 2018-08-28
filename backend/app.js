@@ -475,6 +475,21 @@ app.get('/AllProducts', (req, res) => {
     });
 });
 
+
+// INI BUAT FILTER CATEGORY DI PRODUK PRODUCT LIST
+app.get('/FilterCategory/:id', function(req, res) {
+    var categoryid = req.params.id
+    var panggilData = 'SELECT * FROM  product WHERE id_category=?;'
+    dbs.query(panggilData, [categoryid],(kaloError, hasilQuery) => {
+        if(kaloError) throw kaloError;
+        if(hasilQuery != undefined){
+            res.send(hasilQuery);
+        }
+    });
+});
+
+
+
 // INI BUAT NAMPILIN DETAIL PRODUK DI PRODUCT DETAIL
 app.post('/ProductDetail', (req, res) => {
     var panggilid = req.body.tangkapdata
@@ -534,6 +549,7 @@ app.post('/TotalCartHeader', (req, res) => {
         }
     });
 });
+
 
 // INI BUAT NAMPILIN USER DATA DI CART
 app.post('/ShowUserDetail', (req, res) => {
@@ -632,8 +648,116 @@ app.post('/DeleteCart', (req, res) => {
     });
 });
 
+// KIRIM DATA DARI CART KE IVOICE
+app.post('/ForInvoice',function(req,res){
+    var address = req.body.address
+    var phone = req.body.phone
+    var userid = req.body.id_user
+
+    var showcart = `SELECT * FROM cart JOIN product ON cart.id_product=product.id WHERE id_client="${userid}" AND status="1";`
+    showcart += `SELECT cart.cart_id, product_price*qty AS sub_price FROM cart JOIN product ON cart.id_product=product.id WHERE id_client="${userid}" AND status="1"`
+    dbs.query(showcart, (kaloError, hasilQuery) => {
+        if(kaloError)  throw kaloError;
+
+        if( hasilQuery != undefined){
+
+            var product_name = []
+            var qty =[]
+            var product_price = []
+
+            for(var i = 0 ; i<hasilQuery.length; i ++){
+                product_name.push(hasilQuery[0][i].product_name)
+                qty.push(hasilQuery[0][i].qty)
+                product_price.push(hasilQuery[0][i].product_price)
+            }
+            
+            var total_price =[]
+            var total_all = 0
+
+            for(var i = 0; i<hasilQuery.length; i++){
+                total_price.push(hasilQuery[1][i].sub_price)
+                total_all += Number(hasilQuery[1][i].sub_price)
+            }
+
+        
+            if(product_name.length >=1 && qty.length >=1 && product_price.length>=1 && total_price.length>=1){
+            var sql = "SELECT number FROM `invo`"
+            dbs.query(sql,(err,result)=>{
+                var invoice_number = []
+                for(var i = 0; i<result.length; i++){
+                    invoice_number.push(result[i].number.substr(9,12))
+                }
+                
+                var max = Math.max(...invoice_number)
+                var invoce_tambah = max + 1
+                var new_invoice = "INV01ANIM000" + invoce_tambah
 
 
+                if(new_invoice != undefined){
+
+                    ///// for invoice detail
+                    for(i=0; i<product_name.length ;i++){
+                  var sql = "INSERT INTO `invoice_detail` SET `nama_product`=?,`quantity`=?,`price`=?,`total_price`=?,`invoice_number`=?,`user_id`=?"
+                    dbs.query(sql,[product_name[i],qty[i],product_price[i],total_price[i],new_invoice,userid],(err,result)=>{
+                        if (err) throw err
+                        if(result != undefined){
+                            // console.log("berhasil")
+                        }
+                    })
+                    }
+
+                //  for invoice_all
+                // console.log(total_all)
+                    var sql = "INSERT INTO`invo` SET `number`=?,`ammount`=?,`address`=?,`phone`=?,`user_id`=?"
+                    dbs.query(sql,[new_invoice,total_all,address,phone,userid],(err,result)=>{
+                        if(err) throw err
+                        if(result != undefined){
+
+                        var sql ="DELETE FROM `cart` WHERE `id_client`=?"
+                        dbs.query(sql,userid,(err,result)=>{
+                            if(err) throw err
+                            if(result != undefined){
+                                res.send('berhasil')
+                            }
+                        })
+                        }
+                    })
+                }
+             
+            })
+        }
+        }
+    });
+})
+
+// NARIK DATA DI INVOICE
+// INI BUAT NAMPILIN PRODUK DI CART
+app.post('/Invoice', (req, res) => {
+    var userid = req.body.userid
+    console.log(userid)
+    var showinvoice = `SELECT * FROM invo JOIN invoice_detail ON invo.number=invoice_detail.invoice_number WHERE invoice_detail.user_id=?`
+    dbs.query(showinvoice,userid, (kaloError, hasilQuery) => {
+        if(kaloError) throw kaloError;
+        
+        if(hasilQuery != undefined){
+            res.send(hasilQuery);
+        }
+    });
+});
+
+
+app.post('/userall',(req,res)=>{
+    var userid = req.body.userid
+    console.log(userid)
+    var sql = "SELECT * FROM `user_client` WHERE id=?"
+    dbs.query(sql,userid,(err,result)=>{
+        if(err) throw err
+        if(result != undefined){
+            res.send(result)
+        }
+    })
+
+})
 
 app.listen(port, () => {
     console.log('Server berjalan di port '+port+' ....')

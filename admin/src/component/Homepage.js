@@ -87,17 +87,17 @@ class Homepage extends Component {
                 <div className="col-md-4 col-sm-4 col-xs-6 tile_stats_count" style={{backgroundColor: '#d0d0d0', border: '5px solid white'}}>
                   <span className="count_top"><i className="fa fa-user" />Total Products</span>
                   <div className="count">{this.state.totaltshirt}</div>
-                  <span className="count_bottom">On Animico TSHIRT</span>
+                  <span className="count_bottom">On Animico <b>TSHIRT</b></span>
                 </div>
                 <div className="col-md-4 col-sm-4 col-xs-6 tile_stats_count" style={{backgroundColor: '#d0d0d0', border: '5px solid white'}}>
                   <span className="count_top"><i className="fa fa-user" /> Total Products</span>
                   <div className="count">{this.state.totalshirt}</div>
-                  <span className="count_bottom">On Animico Shirt</span>
+                  <span className="count_bottom">On Animico <b>SHIRT</b></span>
                 </div>
                 <div className="col-md-4 col-sm-4 col-xs-6 tile_stats_count" style={{backgroundColor: '#d0d0d0', border: '5px solid white'}}>
                   <span className="count_top"><i className="fa fa-user" /> Total Products</span>
                   <div className="count">{this.state.totalhoodie}</div>
-                  <span className="count_bottom">On Animico <b>Hoodie</b></span>
+                  <span className="count_bottom">On Animico <b>HOODIE</b></span>
                 </div>
             </div>
           </div>

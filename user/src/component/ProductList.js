@@ -25,6 +25,18 @@ class productList extends Component {
             console.log(this.state.listkategori)
         })
     }
+
+    filter (obj) {
+        console.log(obj)
+        axios.get(`http://localhost:8002/FilterCategory/` + obj,)
+          .then(
+            (ambilData) => {
+                this.setState({
+                    allproducts: ambilData.data
+              })
+            })
+        }
+
     render() {
         
         let mycookie = cookies.get('sessioniduser');
@@ -51,12 +63,13 @@ class productList extends Component {
                 </div>
             </div>
         })
+            
 
         const categorylist = this.state.listkategori.map((item, index) =>{
             var categoryid = item.id;
             var categoryname = item.category_name;
 
-            return<li value={categoryid}><a href="#tshirt" data-toggle="pill">{categoryname}</a></li>
+            return<li onClick={() => this.filter(categoryid)} value={categoryid}><a href="#tshirt" data-toggle="pill">{categoryname}</a></li>
         })
 
         return (

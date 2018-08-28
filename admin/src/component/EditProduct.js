@@ -211,14 +211,14 @@ kirimsemua = (e) => {
                                     <input value={this.state.hargaproduk} ref="hargaproduk" onChange={this.ganti4} type="number" required="required" className="form-control col-md-7 col-xs-12" />
                                 </div>
                                 </div>
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                 <label className="control-label col-md-3 col-sm-3 col-xs-12">Size</label>
                                 <div className="col-md-3 col-sm-3 col-xs-12">
                                     <select value={this.state.ukuranproduk} ref="listukuran" onChange={this.ganti2} className="form-control">
                                     {listukuran}
                                     </select>
                                 </div>
-                                </div>
+                                </div> */}
                                 <div className="form-group">
                                 <label className="control-label col-md-3 col-sm-3 col-xs-12">Image <span className="required">*</span>
                                 </label>

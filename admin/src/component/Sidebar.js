@@ -11,10 +11,10 @@ class Sidebar extends Component {
             <div className="sidebar-header" style={{textAlign: 'center'}}>
                 <img src="images/logo5.png" />
             </div>
-            <div style={{margin: 30, textAlign: 'center'}}>
+            {/* <div style={{margin: 30, textAlign: 'center'}}>
                 <h4>Esa Adama</h4>
                 <a href="/Homepage"><button className="btn btn-grey">Edit Profile</button></a>
-            </div>
+            </div> */}
             <ul className="list-unstyled components">
                 <li>
                 <a href="/Homepage">Dashboard</a>

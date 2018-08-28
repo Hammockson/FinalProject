@@ -35,7 +35,7 @@ class Homepage extends Component {
             var categoryid = item.id;
             var categoryname = item.category_name;
 
-            return <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO {categoryname}</p>
+            // return <p className="animico-txt3" style={{fontSize: 12}}>ANIMICO {categoryname}</p>
         })
 
         const productlist = this.state.allproducts.map((item, index) =>{

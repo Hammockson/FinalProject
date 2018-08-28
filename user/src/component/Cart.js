@@ -6,6 +6,7 @@ import HeaderLogged from './HeaderLogged'
 import axios from 'axios'
 import $ from 'jquery'
 import { Link, Redirect } from 'react-router-dom';
+import Invoice from './Invoice';
 
 const cookies = new Cookies()
 
@@ -18,7 +19,9 @@ class Cart extends Component {
         adrress: '',
         phone: '',
         email: '',
-        grandtotal: 0
+        grandtotal: 0,
+        subtotharga:"",
+        next:false
     }
 
     componentWillMount(){
@@ -162,11 +165,35 @@ class Cart extends Component {
         })
     }
 
+
+    cart(obj){
+        var address = obj.address.value
+        var phone = obj.phone.value
+        var id_user = cookies.get('sessioniduser')
+
+        axios.post('http://localhost:8002/ForInvoice', {
+                address: address,
+                phone: phone,
+                id_user: id_user
+        }).then((response)=>{
+            if(response.data == "berhasil"){
+                this.setState({next:true})
+            }
+        })
+   
+    }
+
+
+
     render() {
+
+        if(this.state.next){
+            return <Redirect to="/Invoice"/>
+        }
+
         if(cookies.get('sessioniduser') === undefined) {
             return <Redirect to="/Login"/>
         }
-
         
         const productlist = this.state.listcart.map((item, index) =>{
             var prodgambar = item.product_image;
@@ -181,15 +208,14 @@ class Cart extends Component {
                     var subtotharga = subtotal[i].sub_price
                 }
             }
-            
-            
+
 
             return <tr key={index}>
             <th scope="row"><img src={'http://localhost:8002/images/' + prodgambar} style={{width:100}}/></th>
-            <td>{prodname}</td>
-            <td>IDR {prodprice}</td>
-            <td><input onChange={(e) => this.gantiqty(e.target.value, idcart)} type="number" min={1} defaultValue={prodqty}/></td>
-            <td>{subtotharga}</td>
+            <td ><p ref="prodname">{prodname}</p></td>
+            <td><p ref="price">IDR {prodprice}</p></td>
+            <td><input onChange={(e) => this.gantiqty(e.target.value, idcart)} ref="qty" type="number" min={1} defaultValue={prodqty}/></td>
+            <td><p ref="totalharga">{subtotharga}</p></td>
             <td><button type="button" onClick={() => this.deletecart(idcart)} className="btn animico-btnc animico-txt5b">REMOVE</button></td>
         </tr>
         })
@@ -294,7 +320,7 @@ class Cart extends Component {
                             </div>
                             </div> */}
                             <div style={{textAlign: 'center', marginTop: 50,}}>
-                            <a href="/Invoice" className="btn animico-btnc animico-txt5b">CHECKOUT</a>
+                            <button onClick={()=>this.cart(this.refs)} className="btn animico-btnc animico-txt5b">CHECKOUT</button>
                             </div>
                         </div>
                         </div>

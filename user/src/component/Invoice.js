@@ -1,29 +1,98 @@
 import React, { Component } from 'react';
 import Header from './Header'
 import Footer from './Footer'
-import { Link } from 'react-router-dom';
+import Cookies from 'universal-cookie'
+import HeaderLogged from './HeaderLogged'
+import axios from 'axios'
+import $ from 'jquery'
+import { Link, Redirect } from 'react-router-dom';
+
+const cookies = new Cookies()
 
 class Invoice extends Component {
+    state = {
+        detail: [],
+        total:"",
+        invoice:"",
+        date:"",
+        address:"",
+        firstname:""
+    }
+
+    componentDidMount(){
+        axios.post('http://localhost:8002/Invoice',{
+            userid:cookies.get('sessioniduser')
+        })
+        .then((getdata) => {
+            this.setState({
+                detail : getdata.data,
+            })
+            console.log(this.state.detail)
+         
+            var total= 0
+            for(var i = 0; i<getdata.data.length ; i++){
+                total += Number(getdata.data[i].total_price)
+            }
+           this.setState({total:total})
+           this.setState({invoice:getdata.data[0].invoice_number})
+           this.setState({date:getdata.data[0].date})
+           this.setState({address:getdata.data[0].address})
+        })
+
+        axios.post("http://localhost:8002/userall",{
+            userid:cookies.get('sessioniduser')
+        }).then((response)=>{
+            if(response != undefined){
+                console.log(response.data)
+                this.setState({firstname:response.data[0].firstname})
+            }
+        })
+    }
     render() {
+        let mycookie = cookies.get('sessioniduser');
+        let navigation = (mycookie !== undefined) ? <HeaderLogged /> : <Header />
+
+        if(cookies.get('sessioniduser') === undefined) {
+            return <Redirect to="/Login"/>
+        }
+
+        const listdata = this.state.detail.map((item, index) =>{
+            var number_all = index + 1
+            var nama_product= item.nama_product;
+            var price = item.price;
+            var quantity = item.quantity;
+            var total_price = item.total_price;
+
+            return  <tr key={index}>
+            <th scope="row">{number_all}</th>
+            <td>{nama_product}</td>
+            <td>IDR {price}</td>
+            <td>{quantity}</td>
+            <td>IDR {total_price}</td>
+            </tr>
+
+        })
+
         return (
             <div>
                 <Header />
+                {navigation}
 
                 <div className="container animico-txt3" style={{backgroundColor: '#ffffff', marginTop: '3%', padding: 50}}>
                     <div className="row animico-txt3"> 
-                        <div className="col-md-12" style={{textAlign: 'center'}}>
+                        <div className="col-md-12" style={{textAlign: 'center', border: "1px solid black"}}>
                         <h2>INVOICE</h2>
-                        <h4>#001ANM6789</h4>
+                        <h4>{this.state.invoice}</h4>
                         </div>
                         <div className="col-md-6">
                         <h4>BILLED TO:</h4>
-                        <p>ESA ADAMA</p>
-                        <p>JL. SETIABUDI, JAKARTA</p>
+                        <p>{this.state.firstname}</p>
+                        <p>{this.state.address}</p>
                         <br />
                         </div>
                         <div className="col-md-6" style={{textAlign: 'right'}}>
                         <h4>ORDER DATE:</h4>
-                        <p>04/06/1989</p>
+                        <p>{this.state.date}</p>
                         </div>
                     </div>
                     <div className="col-md-12" style={{backgroundColor: '#ffffff'}}>
@@ -38,54 +107,21 @@ class Invoice extends Component {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                            <th scope="row">1</th>
-                            <td>Animico Tshirt "Owl Spirit"</td>
-                            <td>IDR 90.000</td>
-                            <td>3</td>
-                            <td>IDR 270.000</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">2</th>
-                            <td>Animico Backpack "Adventure"</td>
-                            <td>IDR 130.000</td>
-                            <td>1</td>
-                            <td>IDR 130.000</td>
-                            </tr>
-                            <tr>
-                            <th scope="row">3</th>
-                            <td>Animico Hoodie "Zebra Square"</td>
-                            <td>IDR 110.000</td>
-                            <td>1</td>
-                            <td>IDR 110.000</td>
-                            </tr>
-                            <tr className="animico-txt5">
-                            <th scope="row" />
-                            <td />
-                            <td />
-                            <td>Subtotal</td>
-                            <td>IDR 510.000</td>
-                            </tr>
-                            <tr className="animico-txt5">
-                            <th scope="row" />
-                            <td />
-                            <td />
-                            <td>Shipping</td>
-                            <td>IDR 50.000</td>
-                            </tr>
+                           {listdata}
                             <tr className="animico-txt7">
                             <th scope="row" />
                             <td />
                             <td />
                             <td>TOTAL</td>
-                            <td>IDR 560.000</td>
+                            <td>IDR {this.state.total}</td>
                             </tr>
                         </tbody>
                         </table>
-                        <div className="col-md-12" style={{textAlign: 'center', padding: 50}}>
-                        <a href="#" className="btn animico-btn animico-txt1">DOWNLOAD PDF</a>
-                        </div>
+                        
                     </div>
+                    <div className="col-md-12" style={{textAlign: 'center', padding: 50}}>
+                        <a href="#" className="btn animico-btn animico-txt1">CONFIRM PAYMENT</a>
+                        </div>
                 </div>
                 
                 <Footer />
